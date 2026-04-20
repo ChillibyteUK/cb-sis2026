@@ -1,8 +1,27 @@
 .footer {
-  background-color: var(--col-ink);
+  background-color: var(--col-brand-darkest);
   color: var(--col-white);
 
-  font-size: var(--fs-100);
+  font-size: var(--fs-200);
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(
+      to right,
+      var(--col-purple-400),
+      var(--col-green-400),
+      var(--col-brown-400),
+      var(--col-violet-400),
+      var(--col-orange-400)
+    );
+    z-index: 1;
+  }
 
   .footer-title {
     font-weight: var(--fw-semibold);
@@ -15,8 +34,9 @@
     list-style: none;
     padding-inline-start: 0;
     font-weight: var(--fw-light);
+    margin-block-start: 0;
     li {
-      padding-bottom: 0.25rem;
+      padding-bottom: 0;
     }
   }
   a {
@@ -29,45 +49,15 @@
   }
 
   &__logo {
-    border-top: 1px solid rgba(255, 255, 255, 0.4);
-    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-    .footer__logo-clip {
-      overflow: hidden;
-      display: block;
-      width: 100%;
-    }
-    .footer__logo-clip-2 {
-      overflow: visible;
-      display: block;
-      width: 50vw;
-      margin-left: auto;
-      opacity: 0;
-      transform: translateY(12px);
-
-      svg {
-        display: block;
-        width: 100%;
-        height: auto;
-        overflow: visible;
-      }
-    }
-    .footer__logo-inner {
-      display: block;
-      transform-origin: left center;
-      will-change: transform;
-      svg {
-        display: block;
-        width: 100%;
-        height: auto;
-      }
-    }
+    max-width: 140px;
   }
 
   &__colophon {
-    color: var(--col-neutral-700);
+    border-top: 1px solid var(--col-white-020);
+    color: var(--col-white-070);
     font-size: var(--fs-50);
     font-weight: var(--fw-light);
-    line-height: var(--lh-100);
+    line-height: var(--lh-800);
     letter-spacing: var(--ls-20);
   }
 }

@@ -1,0 +1,67 @@
+.cb-facilities-nav {
+  img {
+    width: 60px;
+    @media (min-width:768px) {
+        margin-inline: 0.5rem;
+    }
+  }
+
+  &__row {
+    text-decoration: none;
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    align-items: center;
+    gap: 0.25rem 1rem;
+    padding-block: 1rem;
+    border-top: 1px solid;
+    transition: background var(--transition);
+
+    > :last-child {
+      grid-column: 1 / -1;
+    }
+
+    @media (min-width: 768px) {
+      grid-template-columns: 78px 10rem 1fr;
+
+      > :last-child {
+        grid-column: auto;
+      }
+    }
+  }
+
+  &__row--motor {
+    border-color: var(--col-violet-400);
+    &:hover {
+      background: hsl(var(--hsl-violet-400) / 0.2);
+    }
+  }
+  &__row--home {
+    border-color: var(--col-green-400);
+    &:hover {
+      background: hsl(var(--hsl-green-400) / 0.2);
+    }
+  }
+  &__row--property {
+    border-color: var(--col-brown-400);
+    &:hover {
+      background: hsl(var(--hsl-brown-400) / 0.2);
+    }
+  }
+  &__row--commercial {
+    border-color: var(--col-purple-400);
+    &:hover {
+      background: hsl(var(--hsl-purple-400) / 0.2);
+    }
+  }
+  &__row--caravan {
+    border-color: var(--col-orange-400);
+    &:hover {
+      background: hsl(var(--hsl-orange-400) / 0.2);
+    }
+  }
+
+  &__ftitle {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-500);
+  }
+}

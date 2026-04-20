@@ -1,10 +1,10 @@
 .text-page {
   background-color: var(--col-white);
   color: var(--col-primary-black);
-  border-bottom: 1px solid hsl(var(--hsl-neutral-400) / 0.4) !important;
+  border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
 
   .post-content {
-    --_colour: var(--col-lime-900);
+    --_colour: var(--col-brand-blue);
     .container {
       padding-inline: 0;
       margin-inline-end: 2rem;
@@ -12,14 +12,14 @@
     > .container:first-of-type {
       color: var(--_colour);
       font-size: var(--fs-500);
-      border-bottom: 1px solid hsl(var(--hsl-neutral-400) / 0.4) !important;
+      border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
       margin-bottom: 2rem;
       padding-block: 1rem 0.5rem;
     }
 
     h2 {
-      border-top: 1px solid hsl(var(--hsl-neutral-400) / 0.4) !important;
-      border-bottom: 1px solid hsl(var(--hsl-neutral-400) / 0.4) !important;
+      border-top: 1px solid rgba(107, 114, 128, 0.4) !important;
+      border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
       color: var(--_colour);
       font-size: var(--fs-600);
       font-weight: var(--fw-light);

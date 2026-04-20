@@ -7,10 +7,11 @@
 @import "text-page";
 @import "a11y";
 @import "search";
+@import "wp";
 @import "blocks/blocks";
 
 body {
-  background-color: var(--col-neutral-50);
+  background-color: var(--col-white);
 }
 
 @media (min-width: 992px) {
@@ -28,8 +29,7 @@ body {
   @media (min-width: 992px) {
     top: 0; //var(--h-top-desktop);
   }
-  background-color: var(--col-neutral-50);
-  z-index: 1000;
+  background-color: var(--col-white);
 }
 
 // Adjust fixed header when admin bar is present
@@ -57,7 +57,7 @@ body {
   a {
     text-decoration: none;
     font-weight: var(--fw-600);
-    color: var(--col-neutral-900);
+    color: var(--col-brand-dark);
   }
 }
 
@@ -72,11 +72,6 @@ body {
 
 .container .container {
   padding-inline: 0;
-}
-
-.id-container {
-  width: min(100%, 1920px);
-  margin: 0 auto;
 }
 
 // main {
@@ -103,14 +98,14 @@ body {
     a {
       text-decoration: none;
       display: block;
-      color: var(--col-green-500);
+      color: var(--col-green-400);
       transition:
         background-color 0.3s,
         color 0.3s;
 
       &:hover {
         text-decoration: none;
-        background-color: hsl(var(--hsl-neutral-800) / 0.8);
+        background-color: hsl(var(--hsl-ink) / 0.8);
       }
     }
   }
@@ -442,11 +437,11 @@ for (; i < all.length; i++) {
 // }
 
 .has-neutral-400-border-top {
-  border-top: 1px solid var(--col-neutral-400) !important;
+  border-top: 1px solid var(--col-secondary-light) !important;
 }
 
 .has-neutral-400-border-bottom {
-  border-bottom: 1px solid var(--col-neutral-400) !important;
+  border-bottom: 1px solid var(--col-secondary-light) !important;
 }
 
 .service-parents {
@@ -460,30 +455,30 @@ for (; i < all.length; i++) {
   min-width: 50%;
   li {
     font-size: var(--fs-body);
-    border-top: 1px solid var(--col-lime-900);
+    border-top: 1px solid var(--col-brand-blue);
     display: inline-block;
     width: 100%;
     a {
       text-decoration: none;
       display: block;
-      color: var(--col-lime-900);
+      color: var(--col-brand-blue);
       transition:
         background-color 0.3s,
         color 0.3s;
 
       &:hover {
         text-decoration: none;
-        background-color: var(--col-lime-200);
+        background-color: rgba(0, 85, 165, 0.1);
       }
     }
   }
   li:last-child {
-    border-bottom: 1px solid var(--col-lime-900);
+    border-bottom: 1px solid var(--col-brand-blue);
   }
 }
 
 hr,
 hr.wp-block-separator {
-  border-top: 1px solid var(--col-neutral-500) !important;
+  border-top: 1px solid var(--col-secondary-dark) !important;
   opacity: 1;
 }

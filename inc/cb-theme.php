@@ -12,8 +12,8 @@ defined( 'ABSPATH' ) || exit;
 
 require_once CB_THEME_DIR . '/inc/cb-utility.php';
 require_once CB_THEME_DIR . '/inc/cb-acf-theme-palette.php';
-require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
-require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
+// require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
+// require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
 
 
 require_once CB_THEME_DIR . '/inc/cb-blocks.php';
@@ -27,6 +27,7 @@ add_action(
     function () {
         add_theme_support( 'editor-styles' );
         add_editor_style( 'css/custom-editor-style.min.css' );
+        add_theme_support( 'align-wide' );
     },
     5
 );
@@ -101,12 +102,8 @@ function widgets_init() {
     register_nav_menus(
         array(
             'primary_nav'            => 'Primary Nav',
-            'footer_menu_business'   => 'Footer Business',
+            'footer_menu_services'   => 'Footer Services',
             'footer_menu_about'      => 'Footer About',
-            'footer_menu_solutions'  => 'Footer Solutions',
-            'footer_menu_specialist' => 'Footer Specialist',
-            'footer_menu_resources'  => 'Footer Resources',
-            'footer_menu_identity'   => 'Footer Identity',
             'footer_menu_legal'      => 'Footer Legal & Info',
         )
     );
