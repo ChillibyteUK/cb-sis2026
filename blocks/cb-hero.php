@@ -11,9 +11,11 @@ $block_id      = $block['anchor'] ?? $block['id'] ?? wp_unique_id( 'cb-hero-' );
 $background_id = get_field( 'background' );
 $cta_1         = get_field( 'cta_1' );
 $cta_2         = get_field( 'cta_2' );
+
+$hero_depth = is_front_page() ? '' : 'cb-hero--short';
 ?>
 
-<section id="<?= esc_attr( $block_id ); ?>" class="cb-hero">
+<section id="<?= esc_attr( $block_id ); ?>" class="cb-hero <?= esc_attr( $hero_depth ); ?>">
 	<?php
 	if ( $background_id ) {
 		?>
