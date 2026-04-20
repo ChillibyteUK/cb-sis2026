@@ -12,9 +12,7 @@ defined( 'ABSPATH' ) || exit;
 
 require_once CB_THEME_DIR . '/inc/cb-utility.php';
 require_once CB_THEME_DIR . '/inc/cb-acf-theme-palette.php';
-// require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
-// require_once CB_THEME_DIR . '/inc/cb-taxonomies.php';
-
+require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
 
 require_once CB_THEME_DIR . '/inc/cb-blocks.php';
 
@@ -101,10 +99,10 @@ function widgets_init() {
 
     register_nav_menus(
         array(
-            'primary_nav'            => 'Primary Nav',
-            'footer_menu_services'   => 'Footer Services',
-            'footer_menu_about'      => 'Footer About',
-            'footer_menu_legal'      => 'Footer Legal & Info',
+            'primary_nav'          => 'Primary Nav',
+            'footer_menu_services' => 'Footer Services',
+            'footer_menu_about'    => 'Footer About',
+            'footer_menu_legal'    => 'Footer Legal & Info',
         )
     );
 
@@ -497,7 +495,7 @@ add_filter(
 
 add_action(
 	'after_setup_theme',
-	function() {
+	function () {
 		remove_filter( 'tiny_mce_before_init', 'understrap_tiny_mce_before_init' );
 	},
 	20
@@ -512,7 +510,7 @@ add_filter( 'tiny_mce_before_init', 'cb_tiny_mce_before_init', 20 );
  * @return array
  */
 function cb_tiny_mce_before_init( $settings ) {
-	$settings['style_formats'] = wp_json_encode(
+	$settings['style_formats']       = wp_json_encode(
 		array(
 			array(
 				'title'   => 'Standfirst',
@@ -525,3 +523,30 @@ function cb_tiny_mce_before_init( $settings ) {
 
 	return $settings;
 }
+
+/**
+ * Dynamically populate the Associated People checkbox choices from published person posts.
+ *
+ * @param array $field The ACF field array.
+ * @return array
+ */
+function cb_load_associated_people_choices( $field ) {
+	$field['choices'] = array();
+
+	$people = get_posts(
+		array(
+			'post_type'      => 'person',
+			'post_status'    => 'publish',
+			'posts_per_page' => -1,
+			'orderby'        => 'title',
+			'order'          => 'ASC',
+		)
+	);
+
+	foreach ( $people as $person ) {
+		$field['choices'][ $person->ID ] = esc_html( $person->post_title );
+	}
+
+	return $field;
+}
+add_filter( 'acf/load_field/key=field_service_sidebar_people', 'cb_load_associated_people_choices' );

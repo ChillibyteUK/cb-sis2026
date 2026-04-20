@@ -22378,37 +22378,33 @@ header:has(.navbar-collapse.collapsing) {
   display: none;
 }
 
-.text-page {
-  background-color: var(--col-white);
-  color: var(--col-primary-black);
-  border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
-}
-.text-page .post-content {
-  --_colour: var(--col-brand-blue);
-}
-.text-page .post-content .container, .text-page .post-content .wp-block-group:not(.alignfull) {
-  padding-inline: 0;
-  margin-inline-end: 2rem;
-}
-.text-page .post-content > .container:first-of-type, .text-page .post-content > .wp-block-group:first-of-type:not(.alignfull) {
-  color: var(--_colour);
+.service-sidebar h3, .service-sidebar .h3 {
   font-size: var(--fs-500);
-  border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
-  margin-bottom: 2rem;
-  padding-block: 1rem 0.5rem;
+  line-height: var(--lh-500);
+  font-weight: var(--fw-600);
+  margin-bottom: 0.5rem;
+  position: relative;
 }
-.text-page .post-content h2, .text-page .post-content .h2 {
-  border-top: 1px solid rgba(107, 114, 128, 0.4) !important;
-  border-bottom: 1px solid rgba(107, 114, 128, 0.4) !important;
-  color: var(--_colour);
-  font-size: var(--fs-600);
-  font-weight: var(--fw-light);
-  margin-block: 2rem;
-  padding-block: 0.25rem;
+.service-sidebar h3::after, .service-sidebar .h3::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, var(--col-purple-400), var(--col-green-400), var(--col-brown-400), var(--col-violet-400), var(--col-orange-400));
+  z-index: 1;
 }
-.text-page .post-content .table, .wp-block-table .text-page .post-content table,
-.text-page .post-content .wp-block-table table {
-  color: var(--col-primary-black) !important;
+.service-sidebar__person-name {
+  font-weight: var(--fw-600);
+}
+.service-sidebar a {
+  color: var(--col-brand-dark);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+.service-sidebar a:hover {
+  color: var(--col-brand-blue);
 }
 
 .skip-link {

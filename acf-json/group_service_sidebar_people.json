@@ -1,0 +1,54 @@
+{
+    "key": "group_service_sidebar_people",
+    "title": "Associated People",
+    "fields": [
+        {
+            "key": "field_service_sidebar_people",
+            "label": "Associated People",
+            "name": "associated_people",
+            "aria-label": "",
+            "type": "checkbox",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "choices": {
+                "133": "Lee Gerry"
+            },
+            "default_value": [],
+            "return_format": "value",
+            "layout": "vertical",
+            "toggle": 0,
+            "allow_custom": 0,
+            "save_custom": 0,
+            "allow_in_bindings": 0,
+            "custom_choice_button_text": "Add new choice"
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "page_template",
+                "operator": "==",
+                "value": "page-templates\/page-service-sidebar.php"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "side",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "display_title": "",
+    "allow_ai_access": false,
+    "ai_description": "",
+    "modified": 1776699639
+}

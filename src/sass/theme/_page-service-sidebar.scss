@@ -1,0 +1,37 @@
+.service-sidebar {
+  h3 {
+    font-size: var(--fs-500);
+    line-height: var(--lh-500);
+    font-weight: var(--fw-600);
+    margin-bottom: 0.5rem;
+    position: relative;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(
+        to right,
+        var(--col-purple-400),
+        var(--col-green-400),
+        var(--col-brown-400),
+        var(--col-violet-400),
+        var(--col-orange-400)
+      );
+      z-index: 1;
+    }
+  }
+  &__person-name {
+    font-weight: var(--fw-600);
+  }
+  a {
+    color: var(--col-brand-dark);
+    text-decoration: none;
+    transition: color var(--transition);
+    &:hover {
+      color: var(--col-brand-blue);
+    }
+  }
+}
