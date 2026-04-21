@@ -23,8 +23,7 @@ get_header();
 		<div class="container">
 			<div class="row">
 				<div class="col-md-8 has-white-color">
-					<h1 class="mb-2"><?= esc_html( get_the_title( $page_for_posts ) ); ?></h1>
-					<div class="font-lead mb-2"><?= esc_html( get_field( 'subtitle', $page_for_posts ) ); ?></div>
+					<h1 class="mb-4"><?= esc_html( get_the_title( $page_for_posts ) ); ?></h1>
 					<div class="cb-hero__ctas">
 						<a href="/contact/" class="button button--primary">Contact our team</a>
 					</div>
