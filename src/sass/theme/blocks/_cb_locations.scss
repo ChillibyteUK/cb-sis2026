@@ -18,9 +18,15 @@
   }
 
   &__address {
-    &::first-line {
+    p:first-child {
       font-weight: var(--fw-book);
       font-size: var(--fs-500);
+      margin-bottom: 0rem;
+      text-wrap: balance;
+      text-wrap: pretty;
+    }
+    p {
+      margin-block: 0;
     }
   }
 

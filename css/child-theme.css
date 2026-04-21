@@ -23043,9 +23043,15 @@ span a {
   color: var(--col-secondary-light);
   text-transform: uppercase;
 }
-.cb-locations__address::first-line {
+.cb-locations__address p:first-child {
   font-weight: var(--fw-book);
   font-size: var(--fs-500);
+  margin-bottom: 0rem;
+  text-wrap: balance;
+  text-wrap: pretty;
+}
+.cb-locations__address p {
+  margin-block: 0;
 }
 .cb-locations__contact a {
   text-decoration: none;
@@ -23112,6 +23118,22 @@ span a {
   font-size: var(--fs-400);
   line-height: 1.6;
   color: var(--col-body);
+}
+
+input[type=text],
+input[type=email],
+input[type=tel],
+select,
+textarea {
+  border: none;
+  border-bottom: 1px solid var(--col-black-020);
+}
+input[type=text]:focus,
+input[type=email]:focus,
+input[type=tel]:focus,
+select:focus,
+textarea:focus {
+  border-radius: 0;
 }
 
 body {
@@ -23567,6 +23589,22 @@ hr.wp-block-separator {
   opacity: 1;
   height: 3px;
   background: linear-gradient(to right, var(--col-purple-400), var(--col-green-400), var(--col-brown-400), var(--col-violet-400), var(--col-orange-400));
+}
+
+.has-underline {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+}
+.has-underline::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, var(--col-purple-400), var(--col-green-400), var(--col-brown-400), var(--col-violet-400), var(--col-orange-400));
+  z-index: 1;
 }
 
 .has-blue-color,

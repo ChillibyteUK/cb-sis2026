@@ -491,3 +491,26 @@ hr.wp-block-separator {
     var(--col-orange-400)
   );
 }
+
+.has-underline {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.75rem;
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(
+      to right,
+      var(--col-purple-400),
+      var(--col-green-400),
+      var(--col-brown-400),
+      var(--col-violet-400),
+      var(--col-orange-400)
+    );
+    z-index: 1;
+  }
+}

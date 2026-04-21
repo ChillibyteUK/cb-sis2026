@@ -309,7 +309,7 @@
             "allow_in_bindings": 0,
             "rows": 5,
             "placeholder": "",
-            "new_lines": "br"
+            "new_lines": "wpautop"
         },
         {
             "key": "field_69e62a7948d2b",
@@ -398,7 +398,7 @@
             "allow_in_bindings": 0,
             "rows": 5,
             "placeholder": "",
-            "new_lines": "br"
+            "new_lines": "wpautop"
         },
         {
             "key": "field_69e62a9348d2e",
@@ -490,5 +490,5 @@
     "display_title": "",
     "allow_ai_access": false,
     "ai_description": "",
-    "modified": 1776763449
+    "modified": 1776767119
 }
