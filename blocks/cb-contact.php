@@ -15,7 +15,9 @@ $form_shortcode = get_field( 'form_shortcode' );
 		<div class="row g-5">
 			<div class="col-md-8">
 				<h2 class="has-underline">Enquiry Form</h2>
-				<?= do_shortcode( $form_shortcode ); ?>
+				<div class="mt-4">
+					<?= do_shortcode( $form_shortcode ); ?>
+				</div>
 			</div>
 			<div class="col-md-4">
 				<h2 class="mb-4">Our offices</h2>
