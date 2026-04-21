@@ -49,7 +49,7 @@ foreach ( $blocks as $block ) {
 				$people_ids = get_field( 'associated_people' );
 				if ( $people_ids ) {
 					?>
-				<h3>Product contact</h3>
+				<h3 class="mb-4">Product contact</h3>
 				<ul class="service-sidebar__people list-unstyled">
 					<?php
 					foreach ( $people_ids as $person_id ) {
@@ -68,7 +68,7 @@ foreach ( $blocks as $block ) {
 							?>
 							<div class="service-sidebar__person-name"><?= esc_html( get_the_title( $person_id ) ); ?></div>
 						</div>
-						<div class="service-sidebar__person-contact d-flex flex-column">
+						<div class="service-sidebar__person-contact d-flex flex-column mb-4">
 							<?php
 							$email = get_field( 'email_address', $person_id );
 							if ( $email ) {
