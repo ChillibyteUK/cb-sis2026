@@ -23096,8 +23096,8 @@ span a {
   flex-shrink: 0;
 }
 .cb-people__img {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   border-radius: 50%;
   -o-object-fit: cover;
   object-fit: cover;

@@ -42,7 +42,7 @@ if ( ! $people ) {
 				}
 				?>
 				<div class="cb-people__body">
-					<div class="cb-people__name"><?= esc_html( get_the_title( $person->ID ) ); ?></div>
+					<h3 class="cb-people__name"><?= esc_html( get_the_title( $person->ID ) ); ?></h3>
 					<?php
 					if ( $bio ) {
 						?>
