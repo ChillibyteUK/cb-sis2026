@@ -105,4 +105,25 @@ foreach ( $blocks as $block ) {
 </main>
 
 <?php
+add_action( 'wp_footer', function () {
+	?>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	const sidebar = document.querySelector( '.service-sidebar' );
+	if ( ! sidebar ) return;
+
+	gsap.from( sidebar, {
+		y: 20,
+		opacity: 0,
+		duration: 0.6,
+		ease: 'power2.out',
+		delay: 0.3,
+	} );
+})();
+</script>
+	<?php
+}, 20 );
+
 get_footer();
