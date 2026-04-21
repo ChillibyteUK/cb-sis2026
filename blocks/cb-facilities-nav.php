@@ -71,7 +71,7 @@ add_action(
 		const tl = gsap.timeline({
 			scrollTrigger: {
 				trigger: section,
-				start: 'top bottom-=20vw',
+				start: 'top 85%',
 				once: true,
 			}
 		});

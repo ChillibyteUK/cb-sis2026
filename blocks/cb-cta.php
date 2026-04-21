@@ -69,7 +69,7 @@ add_action(
 		stagger: 0.15,
 		scrollTrigger: {
 			trigger: section,
-			start: 'top bottom-=20vw',
+			start: 'top 85%',
 			once: true,
 		},
 	} );
