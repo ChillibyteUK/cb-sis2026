@@ -7,149 +7,90 @@
 
 defined( 'ABSPATH' ) || exit;
 get_header();
-
-// get categories.
-$categories     = get_the_category();
-$first_category = null;
-if ( ! empty( $categories ) && ! is_wp_error( $categories ) ) {
-	$first_category = $categories[0];
-}
-
-$category_slug = $first_category instanceof WP_Term ? $first_category->slug : 'news';
-$post_style    = $category_slug;
-
-switch ( $post_style ) {
-	case 'news':
-		$post_style = 'post-news';
-		break;
-	case 'insights':
-		$post_style = 'post-insight';
-		break;
-	case 'people':
-		$post_style = 'post-people';
-		break;
-	case 'tmc':
-		$post_style = 'post-tmc';
-		break;
-	default:
-		$post_style = 'post-news';
-		break;
-}
-
 ?>
-<main id="main" class="single-blog <?= esc_attr( $post_style ); ?>">
-	<div class="id-container pt-5 pb-4">
-		<div class="post-hero-clip-group">
+<main id="main" class="cb-post">
+	<div class="container pt-4 pb-5">
 		<?php
-		if ( get_the_post_thumbnail( get_the_ID() ) ) {
-			?>
-			<?=
-			get_the_post_thumbnail(
-				get_the_ID(),
-				'full',
-				array(
-					'class' => 'post-hero-image',
-					'alt'   => get_post_meta(
-						get_post_thumbnail_id( get_the_ID() ),
-						'_wp_attachment_image_alt',
-						true
-					),
-				)
-			);
-			?>
-			<?php
-		} else {
-			?>
-			<img src="<?php echo esc_url( get_stylesheet_directory_uri() . '/img/default-post-image.png' ); ?>" alt="" class="post-hero-image" />
-			<?php
+		if ( function_exists( 'yoast_breadcrumb' ) ) {
+			yoast_breadcrumb( '<div id="breadcrumbs" class="mb-4">', '</div>' );
 		}
 		?>
-		</div>
-	</div>
-	<div class="category-wrapper">
-		<div class="id-container px-4 px-md-5">
-			<div class="category <?= esc_attr( $category_slug ); ?>"><?= esc_html( $first_category instanceof WP_Term ? $first_category->name : 'News' ); ?></div>
-		</div>
-	</div>
-	<div class="post-title">
-		<div class="id-container px-4 px-md-5">
-			<div class="row">
-				<div class="col-md-9">
-					<h1 class="pt-1"><?= esc_html( get_the_title() ); ?></h1>
+		<div class="row">
+			<div class="col-lg-8">
+				<?php if ( has_post_thumbnail() ) { ?>
+				<div class="cb-post__hero">
+					<?= get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'cb-post__hero-img' ) ); ?>
 				</div>
-			</div>
-		</div>
-	</div>
-	<div class="id-container">
-		<div class="row post-content-row mb-5">
-			<div class="col-md-3"></div>
-			<div class="col-md-9 post-content px-4 px-md-5 ps-md-0 pe-md-5">
+				<?php } ?>
+				<h1 class="cb-post__title"><?= esc_html( get_the_title() ); ?></h1>
+				<div class="cb-post__meta">
+					<span><?= esc_html( get_the_date( 'j M Y' ) ); ?></span>
+					<span><?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> min read</span>
+				</div>
+				<div class="cb-post__content">
+					<?= wp_kses_post( get_the_content() ); ?>
+				</div>
 				<?php
-				echo apply_filters( 'the_content', get_the_content() ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				$prev = get_previous_post();
+				$next = get_next_post();
+
+				if ( $prev || $next ) {
+					$justify = $prev && $next ? 'justify-content-between' : ( $next ? 'justify-content-end' : 'justify-content-start' );
+					?>
+				<nav class="cb-post__nav d-flex <?= esc_attr( $justify ); ?>" aria-label="Post navigation">
+					<?php if ( $prev ) { ?>
+					<a href="<?= esc_url( get_permalink( $prev ) ); ?>" class="button button--secondary">&larr; Previous</a>
+					<?php } ?>
+					<?php if ( $next ) { ?>
+					<a href="<?= esc_url( get_permalink( $next ) ); ?>" class="button button--primary">Next &rarr;</a>
+					<?php } ?>
+				</nav>
+					<?php
+				}
+				?>
+			</div>
+			<div class="col-lg-4">
+				<?php
+				$q = new WP_Query(
+					array(
+						'post_type'      => 'post',
+						'posts_per_page' => 5,
+						'post__not_in'   => array( get_the_ID() ),
+						'orderby'        => 'date',
+						'order'          => 'DESC',
+					)
+				);
+				if ( $q->have_posts() ) {
+					?>
+				<aside class="cb-post-sidebar">
+					<h2 class="cb-post-sidebar__title has-underline">Latest News &amp; Advice</h2>
+					<?php
+					while ( $q->have_posts() ) {
+						$q->the_post();
+						?>
+					<a class="cb-post-sidebar__item" href="<?= esc_url( get_permalink() ); ?>">
+						<?php if ( has_post_thumbnail() ) { ?>
+						<div class="cb-post-sidebar__image-wrap">
+							<?= get_the_post_thumbnail( get_the_ID(), 'medium', array( 'class' => 'cb-post-sidebar__image' ) ); ?>
+						</div>
+						<?php } ?>
+						<div class="cb-post-sidebar__body">
+							<div class="cb-post-sidebar__meta">
+								<span><?= esc_html( get_the_date( 'j M Y' ) ); ?></span>
+								<span><?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> min read</span>
+							</div>
+							<div class="cb-post-sidebar__post-title"><?= esc_html( get_the_title() ); ?></div>
+						</div>
+					</a>
+					<?php } ?>
+				</aside>
+					<?php
+					wp_reset_postdata();
+				}
 				?>
 			</div>
 		</div>
 	</div>
-	<div class="post-date-row">
-		<div class="id-container">
-			<div class="row post-content-row">
-				<div class="col-md-3"></div>
-				<div class="col-md-9 post-content px-4 px-md-5 ps-md-0 pe-md-5">
-					<div class="container post-date pt-3">
-						<?= get_the_date( 'j F Y' ); ?>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-	<?php
-	$cta = null;
-	$btype = $category_slug;
-	$person = null;
-
-	switch ( $category_slug ) {
-		case 'news':
-			$cta = get_field( 'press_cta', 'option' );
-			break;
-		case 'insights':
-			$cta = get_field( 'insight_cta', 'option' );
-			break;
-		case 'people':
-			$cta = get_field( 'people_cta', 'option' );
-			$person = get_the_terms( get_the_ID(), 'person' );
-				if ( $person && ! is_wp_error( $person ) ) {
-					$person = $person[0];
-				} else {
-					$person = null;
-				}
-			$btype = 'people';
-			break;
-		case 'tmc':
-			$cta = get_field( 'press_cta', 'option' );
-			break;
-		default:
-			$cta = get_field( 'press_cta', 'option' );
-			break;
-	}
-
-	set_query_var( 'cta_choice', $cta );
-	set_query_var( 'blog_type', $btype );
-	set_query_var( 'person', $person );
-	$themes = get_the_terms( get_the_ID(), 'theme' );
-	set_query_var( 'theme', ( $themes && ! is_wp_error( $themes ) ) ? $themes[0] : null );
-	?>
-	<section class="recent-news">
-		<?php
-		get_template_part( 'blocks/cb-recent-news' );
-		?>
-	</section>
-	<?php
-
-	get_template_part( 'blocks/cb-cta' );
-
-	?>
 </main>
 <?php
 get_footer();
-?>

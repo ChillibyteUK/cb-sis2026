@@ -4,11 +4,17 @@
 (function () {
   var navbar = document.getElementById("wrapper-navbar");
 
+  if (document.body.classList.contains("single-post")) {
+    navbar.classList.add("scrolled");
+  }
+
   var addNavbarBackground = function () {
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
     } else {
-      navbar.classList.remove("scrolled");
+      if (!document.body.classList.contains("single-post")) {
+        navbar.classList.remove("scrolled");
+      }
     }
   };
 

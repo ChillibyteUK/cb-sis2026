@@ -234,28 +234,6 @@ function cb_add_primary_nav_data_text( $atts, $item, $args ) {
 add_filter( 'nav_menu_link_attributes', 'cb_add_primary_nav_data_text', 10, 3 );
 
 /**
- * Add submenu indicator markup to primary nav items with children.
- *
- * @param string  $title Menu item title.
- * @param WP_Post $item  Menu item object.
- * @param array   $args  Menu args.
- * @param int     $depth Menu depth.
- * @return string
- */
-function cb_add_primary_nav_submenu_indicator( $title, $item, $args, $depth ) {
-	if ( ! isset( $args->theme_location ) || 'primary_nav' !== $args->theme_location ) {
-		return $title;
-	}
-
-	if ( 0 !== (int) $depth || empty( $item->classes ) || ! in_array( 'menu-item-has-children', $item->classes, true ) ) {
-		return $title;
-	}
-
-	return $title . '<span class="nav-submenu-indicator" aria-hidden="true"></span>';
-}
-// add_filter( 'nav_menu_item_title', 'cb_add_primary_nav_submenu_indicator', 10, 4 );
-
-/**
  * Render menu divider items as non-clickable labels.
  *
  * @param string   $item_output The menu item's starting HTML output.

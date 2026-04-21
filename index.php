@@ -2,140 +2,181 @@
 /**
  * Template for displaying the blog index page.
  *
- * @package cb-sis2026
+ * @package cb-starlight2025
  */
 
 defined( 'ABSPATH' ) || exit;
 
 $page_for_posts = get_option( 'page_for_posts' );
 
+$block_id = 'blog-index-hero';
+
 get_header();
+
 ?>
-<main id="main" class="news-insights">
-	<section class="news-insights-hero has-neutral-400-border-bottom">
-		<div class="has-neutral-400-border-top has-neutral-400-border-bottom mt-5">
-			<h1 class="id-container px-4 px-md-5 has-white-color font-hero pt-2 pb-2">
-				Newsroom and perspectives
-			</h1>
+<main id="main">
+	<section id="<?= esc_attr( $block_id ); ?>" class="cb-hero cb-hero--short">
+		<div class="cb-hero__bg" aria-hidden="true">
+			<?= get_the_post_thumbnail( $page_for_posts, 'full', array( 'class' => 'cb-hero__img' ) ); ?>
 		</div>
-		<div class="id-container px-4 px-md-5 pt-5 pb-5">
+		<div class="cb-hero__overlay" aria-hidden="true"></div>
+		<div class="container">
 			<div class="row">
-				<div class="col-md-9 offset-md-3 fs-500 fw-light pb-5">
-					<?php
-					// get content from page_for_posts.
-					echo wp_kses_post(
-						apply_filters(
-							'the_content',
-							$page_for_posts ? get_post_field( 'post_content', $page_for_posts ) : ''
-						)
-					);
-					?>
+				<div class="col-md-8 has-white-color">
+					<h1 class="mb-2"><?= esc_html( get_the_title( $page_for_posts ) ); ?></h1>
+					<div class="font-lead mb-2"><?= esc_html( get_field( 'subtitle', $page_for_posts ) ); ?></div>
+					<div class="cb-hero__ctas">
+						<a href="/contact/" class="button button--primary">Contact our team</a>
+					</div>
 				</div>
 			</div>
 		</div>
 	</section>
-	<section class="insight-type">
-		<div class="insight-type-grid grid-type-1 id-container py-5 px-4 px-md-5">
-			<div class="row g-5">
-			<?php
-			$args = array(
-                'post_type'      => 'post',
-                'post_status'    => array( 'publish' ),
-                'orderby'        => 'date',
-                'order'          => 'DESC', // Descending order.
-                'posts_per_page' => -1,    // Get all posts.
-				// only in the insights or perspective categories.
-				'tax_query'      => array(
-					array(
-						'taxonomy' => 'category',
-						'field'    => 'slug',
-						'terms'    => array( 'insights', 'news' ),
-					),
-				),
-            );
-			$q = new WP_Query( $args );
+    <section class="cb-post-index mt-5">
+        <div class="container pb-5">
+            <?php
+			// phpcs:disable
+			/*
+            // Get all categories for filter buttons.
+            $all_categories = get_categories(
+				array(
+					'hide_empty' => true,
+					'orderby'    => 'name',
+					'order'      => 'ASC',
+				)
+			);
 
-			$counter = 0;
-			while ( $q->have_posts() ) {
-				$q->the_post();
-				++$counter;
-				switch ( $counter ) {
-					case 1:
-						$col_class = 'col-md-3 insight-type-grid__card-1';
-						break;
-					case 2:
-						$col_class = 'col-md-6 insight-type-grid__card-2';
-						break;
-					case 3:
-						$col_class = 'col-md-3 insight-type-grid__card-3';
-						break;
-					case 4:
-						$col_class = 'col-md-6 insight-type-grid__card-4';
-						break;
-					case 5:
-						$col_class = 'col-md-3 insight-type-grid__card-5';
-						break;
-					case 6:
-						$col_class = 'col-md-3 insight-type-grid__card-6';
-						break;
-					case 7:
-						$col_class = 'col-md-12 insight-type-grid__card-7';
-						break;
-					default:
-						$col_class = 'col-md-6';
-						break;
-				}
-
-				?>
-			<div class="<?php echo esc_attr( $col_class ); ?>">			
-				<a href="<?php echo esc_url( get_permalink() ); ?>" class="insight-type-grid__card">
-					<div class="insight-type-grid__image-wrapper">
-						<?php
-						if ( get_the_post_thumbnail( get_the_ID() ) ) {
-							echo get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'insight-type-grid__image', 'alt' => get_post_meta( get_post_thumbnail_id( get_the_ID() ), '_wp_attachment_image_alt', true ) ) );
-						} else {
-							echo '<img src="' . esc_url( get_stylesheet_directory_uri() . '/img/default-post-image.png' ) . '" alt="" class="insight-type-grid__image" />';
-						}
-						?>
-					</div>
-					<div class="insight-type-grid__content">
-						<div class="insight-type-grid__category">
-							<?php
-							$categories = get_the_category();
-							if ( ! empty( $categories ) ) {
-								echo esc_html( $categories[0]->name );
+            if ( ! empty( $all_categories ) ) {
+                ?>
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="filter-buttons text-center">
+                            <button class="btn btn-outline-primary filter-btn active" data-filter="all">All</button>
+                            <?php
+							foreach ( $all_categories as $category ) {
+								?>
+                                <button class="btn btn-outline-primary filter-btn" data-filter="<?= esc_attr( $category->slug ); ?>"><?= esc_html( $category->name ); ?></button>
+                            	<?php
 							}
 							?>
-						</div>
-						<div class="insight-type-grid__title">
-							<?php the_title(); ?>
-						</div>
-						<div class="insight-type-grid__date d-flex align-items-center gap-2">
-							<?php echo get_the_date( 'j F Y' ); ?>
-							<?= cb_sanitise_svg( get_stylesheet_directory_uri() . '/img/arrow-n600.svg', 'insight-type-grid__arrow', 14, 13 ) ?>
-						</div>
+                        </div>
+                    </div>
+                </div>
+                <?php
+            }
+			*/
+			// phpcs:enable
+            ?>
+            <div class="cb-post-grid">
+            <?php
+            $q = new WP_Query(
+				array(
+					'post_type'      => 'post',
+					'post_status'    => array( 'publish', 'future' ),
+					'orderby'        => 'date',
+					'order'          => 'DESC',
+					'posts_per_page' => -1,
+				)
+			);
+
+            if ( $q->have_posts() ) {
+				while ( $q->have_posts() ) {
+					$q->the_post();
+					$categories     = get_the_category();
+					$first_category = ( ! empty( $categories ) && ! is_wp_error( $categories ) ) ? $categories[0] : null;
+					?>
+				<a href="<?= esc_url( get_permalink() ); ?>" class="cb-post-card">
+					<div class="cb-post-card__image-wrap">
+						<?php
+						if ( has_post_thumbnail() ) {
+							echo get_the_post_thumbnail( get_the_ID(), 'medium_large', array( 'class' => 'cb-post-card__image' ) );
+						}
+						?>
+						<?php if ( $first_category ) { ?>
+						<span class="cb-post-card__cat"><?= esc_html( $first_category->name ); ?></span>
+						<?php } ?>
 					</div>
-				</a>	
-			</div>
-				<?php
-				if ( $counter >= 7 ) {
-					$counter = 0;
+					<div class="cb-post-card__body">
+						<div class="cb-post-card__meta">
+							<span><?= esc_html( get_the_date( 'j M Y' ) ); ?></span>
+							<span><?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> min read</span>
+						</div>
+						<h3 class="cb-post-card__title"><?= esc_html( get_the_title() ); ?></h3>
+						<div class="cb-post-card__excerpt"><?= esc_html( get_the_excerpt() ); ?></div>
+						<span class="cb-post-card__cta">Read more</span>
+					</div>
+				</a>
+					<?php
 				}
-			}
-			wp_reset_postdata();
-			?>
-			</div>
-		</div>
-	</section>
-	<?php
+            } else {
+                echo '<p>No posts found.</p>';
+            }
 
-	// include cta template.
-	$cta = get_field( 'insight_cta', 'option' );
-	set_query_var( 'cta_choice', $cta );
-	get_template_part( 'blocks/cb-cta' );
-
-	?>
+            wp_reset_postdata();
+            ?>
+            </div>
+        </div>
+    </section>
 </main>
 <?php
+add_action(
+	'wp_footer',
+	function () use ( $block_id ) {
+		static $printed = false;
+		if ( $printed ) {
+			return;
+		}
+		$printed = true;
+		?>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	const section = document.querySelector( '.cb-hero' );
+	if ( ! section ) return;
+
+	const targets = [
+		section.querySelector( 'h1' ),
+		section.querySelector( '.font-lead' ),
+		section.querySelector( '.cb-hero__intro' ),
+		section.querySelector( '.cb-hero__ctas' ),
+	].filter( Boolean );
+
+	gsap.from( targets, {
+		y: 20,
+		opacity: 0,
+		duration: 0.6,
+		ease: 'power2.out',
+		stagger: 0.15,
+	} );
+})();
+</script>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	gsap.registerPlugin( ScrollTrigger );
+
+	const cards = document.querySelectorAll( '.cb-post-card' );
+	if ( ! cards.length ) return;
+
+	gsap.from( cards, {
+		y: 30,
+		opacity: 0,
+		duration: 0.5,
+		ease: 'power2.out',
+		stagger: 0.08,
+		scrollTrigger: {
+			trigger: '.cb-post-index',
+			start: 'top 85%',
+			once: true,
+		},
+	} );
+})();
+</script>
+		<?php
+	},
+	20
+);
+
 get_footer();
-?>
