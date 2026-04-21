@@ -22033,7 +22033,7 @@ header .nav-link {
   transition: color var(--transition);
 }
 header .nav-link:hover, header .nav-link:focus, header .nav-link:focus-visible {
-  color: var(--col-orange-400);
+  color: var(--col-blue-400);
 }
 header .current_page_item > .nav-link,
 header .current_page_parent > .nav-link,
@@ -22042,7 +22042,7 @@ header .current-menu-parent > .nav-link,
 header .current-menu-ancestor > .nav-link,
 header .dropdown.current-page-ancestor > .nav-link,
 header .dropdown.current-menu-item > .nav-link {
-  color: var(--col-blue-400);
+  color: var(--col-orange-400);
 }
 header .site-logo {
   display: block;
@@ -22153,6 +22153,13 @@ header:has(.navbar-collapse.collapsing) {
 }
 .footer a:hover {
   color: var(--col-blue-400);
+}
+.footer .current_page_item > a,
+.footer .current_page_parent > a,
+.footer .current-page-ancestor > a,
+.footer .current-menu-parent > a,
+.footer .current-menu-ancestor > a {
+  color: var(--col-orange-400);
 }
 .footer__logo {
   max-width: 140px;

@@ -47,6 +47,13 @@
       color: var(--col-blue-400);
     }
   }
+  .current_page_item > a,
+  .current_page_parent > a,
+  .current-page-ancestor > a,
+  .current-menu-parent > a,
+  .current-menu-ancestor > a {
+    color: var(--col-orange-400);
+  }
 
   &__logo {
     max-width: 140px;
