@@ -105,8 +105,10 @@ foreach ( $blocks as $block ) {
 </main>
 
 <?php
-add_action( 'wp_footer', function () {
-	?>
+add_action(
+	'wp_footer',
+	function () {
+		?>
 <script>
 (function () {
 	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
@@ -123,7 +125,9 @@ add_action( 'wp_footer', function () {
 	} );
 })();
 </script>
-	<?php
-}, 20 );
+		<?php
+	},
+	20
+);
 
 get_footer();

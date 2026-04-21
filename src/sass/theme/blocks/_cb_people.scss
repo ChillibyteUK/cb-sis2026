@@ -1,0 +1,48 @@
+.cb-people {
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__card {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+  }
+
+  &__img-wrap {
+    flex-shrink: 0;
+  }
+
+  &__img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+  }
+
+  &__body {
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-weight: var(--fw-semibold);
+    font-size: var(--fs-500);
+    border-bottom: 1px solid var(--col-black-020);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+
+  &__bio {
+    font-size: var(--fs-400);
+    line-height: 1.6;
+    color: var(--col-body);
+  }
+}

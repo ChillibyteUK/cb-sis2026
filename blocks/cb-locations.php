@@ -14,6 +14,14 @@ defined( 'ABSPATH' ) || exit;
 		<div class="mb-4">Operating across the United Kingdom and Cyprus</div>
 		<div class="row">
 			<div class="col-md-6 d-flex flex-column gap-1">
+				<?php
+				if ( in_array( 'Yes', (array) get_field( 'maps' ), true ) ) {
+					$map_uk = get_field( 'map_UK', 'option' );
+					if ( $map_uk ) {
+						echo wp_get_attachment_image( is_array( $map_uk ) ? $map_uk['ID'] : $map_uk, 'full', false, array( 'class' => 'cb-locations__map' ) );
+					}
+				}
+				?>
 				<div class="cb-locations__subtitle">United Kingdom</div>
 				<div class="cb-locations__address mb-3">
 					<?= wp_kses_post( get_field( 'address_uk', 'option' ) ); ?>
@@ -24,6 +32,14 @@ defined( 'ABSPATH' ) || exit;
 				</div>
 			</div>
 			<div class="col-md-6 d-flex flex-column gap-1">
+				<?php
+				if ( in_array( 'Yes', (array) get_field( 'maps' ), true ) ) {
+					$map_cy = get_field( 'map_CY', 'option' );
+					if ( $map_cy ) {
+						echo wp_get_attachment_image( is_array( $map_cy ) ? $map_cy['ID'] : $map_cy, 'full', false, array( 'class' => 'cb-locations__map' ) );
+					}
+				}
+				?>
 				<div class="cb-locations__subtitle">Cyprus</div>
 				<div class="cb-locations__address mb-3">
 					<?= wp_kses_post( get_field( 'address_cy', 'option' ) ); ?>

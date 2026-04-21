@@ -1,0 +1,23 @@
+{
+  "key": "group_cb_people",
+  "title": "CB People",
+  "fields": [
+    {
+      "key": "field_cb_people_title",
+      "label": "CB People",
+      "name": "title",
+      "type": "message"
+    }
+  ],
+  "location": [
+    [
+      {
+        "param": "block",
+        "operator": "==",
+        "value": "acf/cb-people"
+      }
+    ]
+  ],
+  "active": 1,
+  "description": ""
+}

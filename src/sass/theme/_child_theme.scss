@@ -479,6 +479,15 @@ for (; i < all.length; i++) {
 
 hr,
 hr.wp-block-separator {
-  border-top: 1px solid var(--col-secondary-dark) !important;
+  border: none !important;
   opacity: 1;
+  height: 3px;
+  background: linear-gradient(
+    to right,
+    var(--col-purple-400),
+    var(--col-green-400),
+    var(--col-brown-400),
+    var(--col-violet-400),
+    var(--col-orange-400)
+  );
 }

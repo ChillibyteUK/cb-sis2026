@@ -1,6 +1,14 @@
 .cb-locations {
   overflow-x: hidden;
 
+  &__map {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 1rem;
+  }
+
   &__subtitle {
     font-size: var(--fs-200);
     letter-spacing: var(--ls-80);
