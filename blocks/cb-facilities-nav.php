@@ -49,3 +49,45 @@ defined( 'ABSPATH' ) || exit;
 		</a>
 	</div>
 </section>
+<?php
+add_action(
+	'wp_footer',
+	function () {
+		static $printed = false;
+		if ( $printed ) {
+			return;
+		}
+		$printed = true;
+		?>
+<script>
+	(function () {
+		if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+		gsap.registerPlugin( ScrollTrigger );
+
+		const section = document.querySelector( '.cb-facilities-nav' );
+		if ( ! section ) return;
+
+		const tl = gsap.timeline({
+			scrollTrigger: {
+				trigger: section,
+				start: 'top bottom-=20vw',
+				once: true,
+			}
+		});
+
+		section.querySelectorAll( '.cb-facilities-nav__row' ).forEach( ( row, i ) => {
+			const icon  = row.querySelector( '.cb-facilities-nav__icon' );
+			const title = row.querySelector( '.cb-facilities-nav__ftitle' );
+			const desc  = row.querySelector( '.cb-facilities-nav__fdesc' );
+			const pos   = i === 0 ? 0 : '>-=0.4';
+
+			tl.from( [ icon, title ], { x: -40, opacity: 0, duration: 0.5, ease: 'power2.out' }, pos )
+			.from( desc,            { x:  40, opacity: 0, duration: 0.5, ease: 'power2.out' }, '<' );
+		} );
+	})();
+</script>
+		<?php
+	},
+	20
+);

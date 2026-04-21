@@ -35,3 +35,47 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 	</div>
 </section>
+<?php
+add_action(
+	'wp_footer',
+	function () {
+		static $printed = false;
+		if ( $printed ) {
+			return;
+		}
+		$printed = true;
+		?>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	gsap.registerPlugin( ScrollTrigger );
+
+	const section = document.querySelector( '.cb-cta' );
+	if ( ! section ) return;
+
+	const targets = [
+		section.querySelector( 'h2' ),
+		section.querySelector( '.w-constrained' ),
+		section.querySelector( '.button' ),
+		section.querySelector( '.cb-cta__post-text' ),
+	].filter( Boolean );
+
+	gsap.from( targets, {
+		y: 20,
+		opacity: 0,
+		duration: 0.6,
+		ease: 'power2.out',
+		stagger: 0.15,
+		scrollTrigger: {
+			trigger: section,
+			start: 'top bottom-=20vw',
+			once: true,
+		},
+	} );
+})();
+</script>
+		<?php
+	},
+	20
+);

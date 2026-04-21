@@ -94,6 +94,43 @@ document.addEventListener('DOMContentLoaded', function () {
 <?php } ?>
 
 <?php
+add_action(
+	'wp_footer',
+	function () {
+		static $printed = false;
+		if ( $printed ) {
+			return;
+		}
+		$printed = true;
+		?>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	const section = document.querySelector( '.cb-hero' );
+	if ( ! section ) return;
+
+	const targets = [
+		section.querySelector( 'h1' ),
+		section.querySelector( '.font-lead' ),
+		section.querySelector( '.cb-hero__intro' ),
+		section.querySelector( '.cb-hero__ctas' ),
+	].filter( Boolean );
+
+	gsap.from( targets, {
+		y: 20,
+		opacity: 0,
+		duration: 0.6,
+		ease: 'power2.out',
+		stagger: 0.15,
+	} );
+})();
+</script>
+		<?php
+	},
+	20
+);
+
 if ( is_front_page() ) {
 	?>
 <div class="cb-hero--srg">

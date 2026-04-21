@@ -22950,6 +22950,9 @@ span a {
   min-height: 400px;
 }
 
+.cb-facilities-nav {
+  overflow-x: hidden;
+}
 .cb-facilities-nav img {
   width: 60px;
 }
@@ -23014,6 +23017,9 @@ span a {
   font-size: var(--fs-500);
 }
 
+.cb-locations {
+  overflow-x: hidden;
+}
 .cb-locations__subtitle {
   font-size: var(--fs-200);
   letter-spacing: var(--ls-80);

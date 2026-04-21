@@ -36,3 +36,42 @@ defined( 'ABSPATH' ) || exit;
 		</div>
 	</div>
 </section>
+<?php
+add_action(
+	'wp_footer',
+	function () {
+		static $printed = false;
+		if ( $printed ) {
+			return;
+		}
+		$printed = true;
+		?>
+<script>
+(function () {
+	if ( window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches ) return;
+
+	gsap.registerPlugin( ScrollTrigger );
+
+	const section = document.querySelector( '.cb-locations' );
+	if ( ! section ) return;
+
+	const cols = section.querySelectorAll( '.col-md-6' );
+	if ( cols.length < 2 ) return;
+
+	const opts = { opacity: 0, duration: 0.9, ease: 'power2.out' };
+
+	gsap.timeline({
+		scrollTrigger: {
+			trigger: section,
+			start: 'top bottom-=20vw',
+			once: true,
+		}
+	})
+	.from( cols[0], { ...opts, x: -50 } )
+	.from( cols[1], { ...opts, x:  50 }, '<' );
+})();
+</script>
+		<?php
+	},
+	20
+);

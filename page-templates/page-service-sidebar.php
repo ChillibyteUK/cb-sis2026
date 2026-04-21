@@ -56,7 +56,16 @@ foreach ( $blocks as $block ) {
 						?>
 					<div class="service-sidebar__person">
 						<div class="d-flex align-items-center gap-2 mb-3">
-							<?= get_the_post_thumbnail( $person_id, 'thumbnail', array( 'class' => 'service-sidebar__person-img rounded-circle mb-2', 'width' => '80' ) ); ?>
+							<?=
+							get_the_post_thumbnail(
+								$person_id,
+								'thumbnail',
+								array(
+									'class' => 'service-sidebar__person-img rounded-circle mb-2',
+									'width' => '80',
+								)
+							);
+							?>
 							<div class="service-sidebar__person-name"><?= esc_html( get_the_title( $person_id ) ); ?></div>
 						</div>
 						<div class="service-sidebar__person-contact d-flex flex-column">

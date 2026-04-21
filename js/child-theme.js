@@ -6875,11 +6875,6 @@
 		if (hasRequiredCustomJavascript) return customJavascript;
 		hasRequiredCustomJavascript = 1;
 		// Add your custom JS here.
-		AOS.init({
-		  easing: "ease-out",
-		  once: true,
-		  duration: 600
-		});
 
 		// Add background to navbar on scroll
 		(function () {

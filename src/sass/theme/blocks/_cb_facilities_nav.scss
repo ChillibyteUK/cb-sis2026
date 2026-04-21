@@ -1,8 +1,10 @@
 .cb-facilities-nav {
+  overflow-x: hidden;
+
   img {
     width: 60px;
-    @media (min-width:768px) {
-        margin-inline: 0.5rem;
+    @media (min-width: 768px) {
+      margin-inline: 0.5rem;
     }
   }
 
