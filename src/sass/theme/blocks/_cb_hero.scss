@@ -4,6 +4,7 @@
   isolation: isolate;
   display: flex;
   align-items: center;
+  background-color: var(--col-brand-darkest);
 
   &::after {
     content: "";

@@ -22881,6 +22881,7 @@ span a {
   isolation: isolate;
   display: flex;
   align-items: center;
+  background-color: var(--col-brand-darkest);
 }
 .cb-hero::after {
   content: "";
