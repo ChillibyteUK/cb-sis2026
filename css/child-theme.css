@@ -22042,7 +22042,7 @@ header .current-menu-parent > .nav-link,
 header .current-menu-ancestor > .nav-link,
 header .dropdown.current-page-ancestor > .nav-link,
 header .dropdown.current-menu-item > .nav-link {
-  color: var(--col-orange-400);
+  color: var(--col-blue-400);
 }
 header .site-logo {
   display: block;
@@ -22152,7 +22152,7 @@ header:has(.navbar-collapse.collapsing) {
   transition: color 0.3s ease;
 }
 .footer a:hover {
-  color: var(--col-purple-400);
+  color: var(--col-blue-400);
 }
 .footer__logo {
   max-width: 140px;

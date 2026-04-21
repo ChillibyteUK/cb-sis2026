@@ -23,27 +23,27 @@ defined( 'ABSPATH' ) || exit;
 		}
 		?>
 		<a href="/services/motor/" class="cb-facilities-nav__row cb-facilities-nav__row--motor">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--motor.svg' ); ?>" class="cb-facilities-nav__icon">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--motor.svg' ); ?>" class="cb-facilities-nav__icon" alt="Motor icon">
 			<div class="cb-facilities-nav__ftitle">Motor</div>
 			<div class="cb-facilities-nav__fdesc">Add-on protection products for motor policies and drivers.</div>
 		</a>
-		<a href="/services/home/" class="cb-facilities-nav__row cb-facilities-nav__row--home">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--home.svg' ); ?>" class="cb-facilities-nav__icon">
-			<div class="cb-facilities-nav__ftitle">Home</div>
+		<a href="/services/household/" class="cb-facilities-nav__row cb-facilities-nav__row--home">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--home.svg' ); ?>" class="cb-facilities-nav__icon" alt="Household icon">
+			<div class="cb-facilities-nav__ftitle">Household</div>
 			<div class="cb-facilities-nav__fdesc">Household protection products designed for residential policies.</div>
 		</a>
 		<a href="/services/property/" class="cb-facilities-nav__row cb-facilities-nav__row--property">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--property.svg' ); ?>" class="cb-facilities-nav__icon">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--property.svg' ); ?>" class="cb-facilities-nav__icon" alt="Property icon">
 			<div class="cb-facilities-nav__ftitle">Property</div>
 			<div class="cb-facilities-nav__fdesc">Insurance solutions for landlords and rental property risks.</div>
 		</a>
 		<a href="/services/commercial/" class="cb-facilities-nav__row cb-facilities-nav__row--commercial">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--commercial.svg' ); ?>" class="cb-facilities-nav__icon">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--commercial.svg' ); ?>" class="cb-facilities-nav__icon" alt="Commercial icon">
 			<div class="cb-facilities-nav__ftitle">Commercial</div>
 			<div class="cb-facilities-nav__fdesc">Specialist protection products for business and professional risks.</div>
 		</a>
 		<a href="/services/caravan/" class="cb-facilities-nav__row cb-facilities-nav__row--caravan">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--caravan.svg' ); ?>" class="cb-facilities-nav__icon">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--caravan.svg' ); ?>" class="cb-facilities-nav__icon" alt="Caravan icon">
 			<div class="cb-facilities-nav__ftitle">Caravan</div>
 			<div class="cb-facilities-nav__fdesc">Protection products for touring and static caravan owners.</div>
 		</a>
