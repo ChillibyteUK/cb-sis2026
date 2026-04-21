@@ -22392,16 +22392,6 @@ header:has(.navbar-collapse.collapsing) {
   margin-bottom: 0.5rem;
   position: relative;
 }
-.service-sidebar h3::after, .service-sidebar .h3::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--col-purple-400), var(--col-green-400), var(--col-brown-400), var(--col-violet-400), var(--col-orange-400));
-  z-index: 1;
-}
 .service-sidebar__person-name {
   font-weight: var(--fw-600);
 }

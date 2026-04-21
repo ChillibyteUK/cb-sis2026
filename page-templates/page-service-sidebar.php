@@ -49,7 +49,7 @@ foreach ( $blocks as $block ) {
 				$people_ids = get_field( 'associated_people' );
 				if ( $people_ids ) {
 					?>
-				<h3 class="mb-4">Product contact</h3>
+				<h3 class="has-underline mb-4">Product contact</h3>
 				<ul class="service-sidebar__people list-unstyled">
 					<?php
 					foreach ( $people_ids as $person_id ) {
