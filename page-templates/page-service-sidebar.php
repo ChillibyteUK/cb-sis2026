@@ -36,7 +36,7 @@ foreach ( $blocks as $block ) {
 	?>
 
 	<div class="container my-5">
-		<div class="row">
+		<div class="row g-5">
 			<div class="col-lg-9">
 				<?php
 				foreach ( $body_blocks as $block ) {
