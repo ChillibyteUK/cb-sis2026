@@ -73,13 +73,19 @@ foreach ( $blocks as $block ) {
 							$email = get_field( 'email_address', $person_id );
 							if ( $email ) {
 								?>
-							<span>E: <a href="mailto:<?= esc_attr( $email ); ?>" class="service-sidebar__person-email"><?= esc_html( $email ); ?></a></span>
+							<a href="mailto:<?= esc_attr( antispambot( $email ) ); ?>" class="service-sidebar__person-email">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+								<?= esc_html( antispambot( $email ) ); ?>
+							</a>
 								<?php
 							}
 							$phone = get_field( 'phone_number', $person_id );
 							if ( $phone ) {
 								?>
-							<span>T: <a href="tel:<?= esc_attr( preg_replace( '/\D+/', '', $phone ) ); ?>" class="service-sidebar__person-phone"><?= esc_html( $phone ); ?></a></span>
+							<a href="tel:<?= esc_attr( parse_phone( $phone ) ); ?>" class="service-sidebar__person-phone">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V21a1 1 0 0 1-1 1A17 17 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.56a1 1 0 0 1-.25 1.02l-2.2 2.21z"/></svg>
+								<?= esc_html( $phone ); ?>
+							</a>
 								<?php
 							}
 							?>

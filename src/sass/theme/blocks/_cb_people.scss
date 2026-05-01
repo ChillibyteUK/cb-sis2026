@@ -45,4 +45,36 @@
     line-height: 1.6;
     color: var(--col-body);
   }
+
+  &__contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-top: 0.75rem;
+    font-size: var(--fs-300);
+  }
+
+  &__contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+    text-decoration: none;
+    color: var(--col-brand-dark);
+    transition: color var(--transition);
+
+    svg {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
+    &:hover {
+      color: var(--col-brand-blue);
+    }
+
+    &--linkedin {
+      color: var(--col-secondary-dark);
+    }
+  }
 }

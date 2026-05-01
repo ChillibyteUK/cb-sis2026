@@ -13,6 +13,17 @@
     color: var(--col-brand-dark);
     text-decoration: none;
     transition: color var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4em;
+
+    svg {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      flex-shrink: 0;
+    }
+
     &:hover {
       color: var(--col-brand-blue);
     }
