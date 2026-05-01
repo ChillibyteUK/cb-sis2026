@@ -63,8 +63,9 @@
     letter-spacing: var(--ls--25);
     color: var(--col-white);
   }
-  .font-lead {
+  .font-lede {
     font-weight: var(--fw-semibold);
+    text-wrap: balance;
   }
   &__intro {
     max-width: 60ch;

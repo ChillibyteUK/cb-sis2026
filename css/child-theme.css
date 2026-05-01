@@ -21751,7 +21751,7 @@ button,
   letter-spacing: var(--ls-30);
 }
 
-.font-lead,
+.font-lede,
 .font-standfirst {
   font-family: var(--ff-body);
   font-size: var(--fs-500);
@@ -22941,8 +22941,9 @@ span a {
   letter-spacing: var(--ls--25);
   color: var(--col-white);
 }
-.cb-hero .font-lead {
+.cb-hero .font-lede {
   font-weight: var(--fw-semibold);
+  text-wrap: balance;
 }
 .cb-hero__intro {
   max-width: 60ch;

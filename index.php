@@ -136,7 +136,7 @@ add_action(
 
 	const targets = [
 		section.querySelector( 'h1' ),
-		section.querySelector( '.font-lead' ),
+		section.querySelector( '.font-lede' ),
 		section.querySelector( '.cb-hero__intro' ),
 		section.querySelector( '.cb-hero__ctas' ),
 	].filter( Boolean );

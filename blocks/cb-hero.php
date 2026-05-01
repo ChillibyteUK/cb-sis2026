@@ -30,7 +30,7 @@ $hero_depth = is_front_page() ? '' : 'cb-hero--short';
 		<div class="row">
 			<div class="col-md-8 has-white-color">
 				<h1 class="mb-2"><?= esc_html( get_field( 'title' ) ); ?></h1>
-				<div class="font-lead mb-2"><?= esc_html( get_field( 'subtitle' ) ); ?></div>
+				<div class="font-lede mb-2"><?= esc_html( get_field( 'subtitle' ) ); ?></div>
 				<div class="cb-hero__intro mb-4"><?= wp_kses_post( get_field( 'intro' ) ); ?></div>
 				<?php
 				if ( $cta_1 || $cta_2 ) {
@@ -112,7 +112,7 @@ add_action(
 
 	const targets = [
 		section.querySelector( 'h1' ),
-		section.querySelector( '.font-lead' ),
+		section.querySelector( '.font-lede' ),
 		section.querySelector( '.cb-hero__intro' ),
 		section.querySelector( '.cb-hero__ctas' ),
 	].filter( Boolean );
