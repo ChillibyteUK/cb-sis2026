@@ -23127,13 +23127,20 @@ span a {
 .cb-people__name {
   font-weight: var(--fw-semibold);
   font-size: var(--fs-500);
+  margin-bottom: 0.5rem;
+}
+.cb-people__role {
+  font-size: var(--fs-100);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-80);
+  color: var(--col-secondary-dark);
   border-bottom: 1px solid var(--col-black-020);
   margin-bottom: 0.75rem;
   padding-bottom: 0.75rem;
 }
 .cb-people__bio {
   font-size: var(--fs-400);
-  line-height: 1.6;
+  line-height: var(--lh-400);
   color: var(--col-body);
 }
 .cb-people__contact {

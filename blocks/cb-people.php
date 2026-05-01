@@ -30,6 +30,7 @@ if ( ! $people ) {
 			foreach ( $people as $person ) {
 				$thumbnail = get_the_post_thumbnail( $person->ID, 'thumbnail', array( 'class' => 'cb-people__img' ) );
 				$bio       = get_the_excerpt( $person->ID );
+				$prole     = get_field( 'role', $person->ID );
 				?>
 			<div class="cb-people__card">
 				<?php
@@ -44,6 +45,11 @@ if ( ! $people ) {
 				<div class="cb-people__body">
 					<h3 class="cb-people__name"><?= esc_html( get_the_title( $person->ID ) ); ?></h3>
 					<?php
+					if ( $prole ) {
+						?>
+					<div class="cb-people__role"><?= esc_html( $prole ); ?></div>
+						<?php
+					}
 					if ( $bio ) {
 						?>
 					<div class="cb-people__bio"><?= esc_html( $bio ); ?></div>
