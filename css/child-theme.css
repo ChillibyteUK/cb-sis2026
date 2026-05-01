@@ -22952,6 +22952,7 @@ span a {
   line-height: var(--lh-900);
   letter-spacing: var(--ls--25);
   color: var(--col-white);
+  text-wrap: balance;
 }
 .cb-hero .font-lede {
   font-weight: var(--fw-semibold);
