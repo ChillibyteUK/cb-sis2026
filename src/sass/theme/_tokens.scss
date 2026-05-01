@@ -22,7 +22,8 @@ $col-light: #f2f2f2;
   --col-blue-600: #224d92;
   --col-blue-700: #183975;
   --col-blue-900: #0f2142;
-  --col-brand-blue: var(--col-blue-500);
+  --hsl-brand-blue: 209 100% 32%; // blue-500
+  --col-brand-blue: var(--hsl-brand-blue);
   --col-brand-dark: #1f2a37;
   --hsl-brand-darkest: 240 48% 5%; // #070714;
   --col-brand-darkest: hsl(var(--hsl-brand-darkest));

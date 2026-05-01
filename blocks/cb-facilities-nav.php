@@ -21,32 +21,24 @@ defined( 'ABSPATH' ) || exit;
 		<div class="cb-facilities-nav__intro w-constrained-md mb-4"><?= wp_kses_post( get_field( 'intro' ) ); ?></div>
 			<?php
 		}
+		while ( have_rows( 'facilities', 'option' ) ) {
+			the_row();
+			$flink = get_sub_field( 'link' );
+			if ( ! $flink ) {
+				continue;
+			}
+			// get $facility from the link URL, e.g. /services/motor/ => motor.
+			$facility = trim( parse_url( $flink, PHP_URL_PATH ), '/' );
+			$facility = str_replace( 'services/', '', $facility );
+			?>
+		<a href="<?= esc_url( 'link' ); ?>" class="cb-facilities-nav__row cb-facilities-nav__row--<?= esc_attr( $facility ); ?>">
+			<img src="<?= esc_url( get_sub_field( 'icon' ) ); ?>" class="cb-facilities-nav__icon" alt="<?= ucfirst( $facility ); ?> icon">
+			<div class="cb-facilities-nav__ftitle"><?= esc_html( get_sub_field( 'title' ) ); ?></div>
+			<div class="cb-facilities-nav__fdesc"><?= wp_kses_post( get_sub_field( 'description' ) ); ?></div>
+		</a>
+		    <?php
+		}
 		?>
-		<a href="/services/motor/" class="cb-facilities-nav__row cb-facilities-nav__row--motor">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--motor.svg' ); ?>" class="cb-facilities-nav__icon" alt="Motor icon">
-			<div class="cb-facilities-nav__ftitle">Motor</div>
-			<div class="cb-facilities-nav__fdesc">Add-on protection products for motor policies and drivers.</div>
-		</a>
-		<a href="/services/household/" class="cb-facilities-nav__row cb-facilities-nav__row--home">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--home.svg' ); ?>" class="cb-facilities-nav__icon" alt="Household icon">
-			<div class="cb-facilities-nav__ftitle">Household</div>
-			<div class="cb-facilities-nav__fdesc">Household protection products designed for residential policies.</div>
-		</a>
-		<a href="/services/property/" class="cb-facilities-nav__row cb-facilities-nav__row--property">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--property.svg' ); ?>" class="cb-facilities-nav__icon" alt="Property icon">
-			<div class="cb-facilities-nav__ftitle">Property</div>
-			<div class="cb-facilities-nav__fdesc">Insurance solutions for landlords and rental property risks.</div>
-		</a>
-		<a href="/services/commercial/" class="cb-facilities-nav__row cb-facilities-nav__row--commercial">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--commercial.svg' ); ?>" class="cb-facilities-nav__icon" alt="Commercial icon">
-			<div class="cb-facilities-nav__ftitle">Commercial</div>
-			<div class="cb-facilities-nav__fdesc">Specialist protection products for business and professional risks.</div>
-		</a>
-		<a href="/services/caravan/" class="cb-facilities-nav__row cb-facilities-nav__row--caravan">
-			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--caravan.svg' ); ?>" class="cb-facilities-nav__icon" alt="Caravan icon">
-			<div class="cb-facilities-nav__ftitle">Caravan</div>
-			<div class="cb-facilities-nav__fdesc">Protection products for touring and static caravan owners.</div>
-		</a>
 	</div>
 </section>
 <?php

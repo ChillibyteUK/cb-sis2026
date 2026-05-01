@@ -83,7 +83,7 @@
         {
           "name": "brand-blue",
           "slug": "brand-blue",
-          "color": "var(--col-blue-500)",
+          "color": "var(--hsl-brand-blue)",
           "origin": "theme"
         },
         {

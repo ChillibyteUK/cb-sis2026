@@ -37,7 +37,7 @@
       background: hsl(var(--hsl-violet-400) / 0.2);
     }
   }
-  &__row--home {
+  &__row--household {
     border-color: var(--col-green-400);
     &:hover {
       background: hsl(var(--hsl-green-400) / 0.2);
@@ -59,6 +59,12 @@
     border-color: var(--col-orange-400);
     &:hover {
       background: hsl(var(--hsl-orange-400) / 0.2);
+    }
+  }
+  &__row--bank-cards {
+    border-color: var(--col-brand-blue);
+    &:hover {
+      background: hsl(var(--hsl-brand-blue) / 0.2);
     }
   }
 

@@ -14,7 +14,8 @@
   --col-blue-600: #224d92;
   --col-blue-700: #183975;
   --col-blue-900: #0f2142;
-  --col-brand-blue: var(--col-blue-500);
+  --hsl-brand-blue: 209 100% 32%;
+  --col-brand-blue: var(--hsl-brand-blue);
   --col-brand-dark: #1f2a37;
   --hsl-brand-darkest: 240 48% 5%;
   --col-brand-darkest: hsl(var(--hsl-brand-darkest));
@@ -23017,10 +23018,10 @@ span a {
 .cb-facilities-nav__row--motor:hover {
   background: hsl(var(--hsl-violet-400)/0.2);
 }
-.cb-facilities-nav__row--home {
+.cb-facilities-nav__row--household {
   border-color: var(--col-green-400);
 }
-.cb-facilities-nav__row--home:hover {
+.cb-facilities-nav__row--household:hover {
   background: hsl(var(--hsl-green-400)/0.2);
 }
 .cb-facilities-nav__row--property {
@@ -23040,6 +23041,12 @@ span a {
 }
 .cb-facilities-nav__row--caravan:hover {
   background: hsl(var(--hsl-orange-400)/0.2);
+}
+.cb-facilities-nav__row--bank-cards {
+  border-color: var(--col-brand-blue);
+}
+.cb-facilities-nav__row--bank-cards:hover {
+  background: hsl(var(--hsl-brand-blue)/0.2);
 }
 .cb-facilities-nav__ftitle {
   font-weight: var(--fw-semibold);
