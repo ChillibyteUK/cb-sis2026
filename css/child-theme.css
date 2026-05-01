@@ -15,7 +15,7 @@
   --col-blue-700: #183975;
   --col-blue-900: #0f2142;
   --hsl-brand-blue: 209 100% 32%;
-  --col-brand-blue: var(--hsl-brand-blue);
+  --col-brand-blue: hsl(var(--hsl-brand-blue));
   --col-brand-dark: #1f2a37;
   --hsl-brand-darkest: 240 48% 5%;
   --col-brand-darkest: hsl(var(--hsl-brand-darkest));
