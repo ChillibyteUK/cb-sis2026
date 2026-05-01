@@ -21,22 +21,24 @@ defined( 'ABSPATH' ) || exit;
 		<div class="cb-facilities-nav__intro w-constrained-md mb-4"><?= wp_kses_post( get_field( 'intro' ) ); ?></div>
 			<?php
 		}
-		while ( have_rows( 'facilities', 'option' ) ) {
-			the_row();
-			$flink = get_sub_field( 'link' );
-			if ( ! $flink ) {
-				continue;
-			}
-			// get $facility from the link URL, e.g. /services/motor/ => motor.
-			$facility = trim( parse_url( $flink, PHP_URL_PATH ), '/' );
-			$facility = str_replace( 'services/', '', $facility );
-			?>
-		<a href="<?= esc_url( 'link' ); ?>" class="cb-facilities-nav__row cb-facilities-nav__row--<?= esc_attr( $facility ); ?>">
-			<img src="<?= esc_url( get_sub_field( 'icon' ) ); ?>" class="cb-facilities-nav__icon" alt="<?= ucfirst( $facility ); ?> icon">
-			<div class="cb-facilities-nav__ftitle"><?= esc_html( get_sub_field( 'title' ) ); ?></div>
-			<div class="cb-facilities-nav__fdesc"><?= wp_kses_post( get_sub_field( 'description' ) ); ?></div>
+		$facilities = get_field( 'facilities', 'option' );
+		if ( is_array( $facilities ) ) {
+			foreach ( $facilities as $facility_row ) {
+				$flink = $facility_row['link'] ?? '';
+				if ( ! $flink ) {
+					continue;
+				}
+				// get $facility from the link URL, e.g. /services/motor/ => motor.
+				$facility = trim( wp_parse_url( $flink, PHP_URL_PATH ), '/' );
+				$facility = str_replace( 'services/', '', $facility );
+				?>
+		<a href="<?= esc_url( $flink ); ?>" class="cb-facilities-nav__row cb-facilities-nav__row--<?= esc_attr( $facility ); ?>">
+			<img src="<?= esc_url( $facility_row['icon'] ?? '' ); ?>" class="cb-facilities-nav__icon" alt="<?= esc_attr( ucfirst( $facility ) ); ?> icon">
+			<div class="cb-facilities-nav__ftitle"><?= esc_html( $facility_row['title'] ?? '' ); ?></div>
+			<div class="cb-facilities-nav__fdesc"><?= wp_kses_post( $facility_row['description'] ?? '' ); ?></div>
 		</a>
-		    <?php
+			    <?php
+			}
 		}
 		?>
 	</div>
