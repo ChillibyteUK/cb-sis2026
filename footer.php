@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
 					United Kingdom
 				</div>
 				<div>
-					T: <a href="tel:<?= esc_attr( parse_phone( get_field( 'phone_uk', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( get_field( 'phone_uk', 'option' ) ); ?></a><br>
-					E: <a href="mailto:<?= esc_attr( antispambot( get_field( 'email_uk', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( antispambot( get_field( 'email_uk', 'option' ) ) ); ?></a>
+					T: <a href="tel:<?= esc_attr( parse_phone( get_field( 'contact_phone', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( get_field( 'contact_phone', 'option' ) ); ?></a><br>
+					E: <a href="mailto:<?= esc_attr( antispambot( get_field( 'contact_email', 'option' ) ) ); ?>" class="footer__contact"><?= esc_html( antispambot( get_field( 'contact_email', 'option' ) ) ); ?></a>
 				</div>
 			</div>
 			<div class="col-12 col-sm-6 col-md-3">
