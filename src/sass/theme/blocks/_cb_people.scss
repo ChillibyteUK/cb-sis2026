@@ -25,6 +25,7 @@
     border-radius: 50%;
     object-fit: cover;
     display: block;
+    filter: grayscale(1);
   }
 
   &__body {

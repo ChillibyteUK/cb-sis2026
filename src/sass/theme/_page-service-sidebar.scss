@@ -6,6 +6,11 @@
     margin-bottom: 0.5rem;
     position: relative;
   }
+  &__person {
+    img {
+      filter: grayscale(1);
+    }
+  }
   &__person-name {
     font-weight: var(--fw-600);
   }

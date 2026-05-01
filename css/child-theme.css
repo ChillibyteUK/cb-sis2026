@@ -22409,6 +22409,9 @@ header:has(.navbar-collapse.collapsing) {
   margin-bottom: 0.5rem;
   position: relative;
 }
+.service-sidebar__person img {
+  filter: grayscale(1);
+}
 .service-sidebar__person-name {
   font-weight: var(--fw-600);
 }
@@ -23119,6 +23122,7 @@ span a {
   -o-object-fit: cover;
   object-fit: cover;
   display: block;
+  filter: grayscale(1);
 }
 .cb-people__body {
   flex: 1;
