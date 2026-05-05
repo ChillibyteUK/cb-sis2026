@@ -23182,6 +23182,9 @@ span a {
 .cb-people__contact-link--linkedin {
   color: var(--col-secondary-dark);
 }
+.cb-people__contact-link--contact {
+  cursor: pointer;
+}
 
 input[type=text],
 input[type=email],

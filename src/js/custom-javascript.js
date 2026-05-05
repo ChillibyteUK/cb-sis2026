@@ -188,6 +188,60 @@
   statHeroes.forEach((hero) => observer.observe(hero));
 })();
 
+// Contact-person modal: update title and set the hidden recipient_pid field
+// when Bootstrap fires show.bs.modal. Uses event.relatedTarget (the trigger
+// link) to read the person's post ID, first name, and full name.
+(function () {
+  const modal = document.getElementById("modal-contact-person");
+  if (!modal) return;
+
+  const formId = modal.dataset.gfFormId;
+  const recipientField = modal.dataset.gfRecipientField;
+
+  modal.addEventListener("show.bs.modal", function (event) {
+    const trigger = event.relatedTarget;
+    if (!trigger) return;
+
+    const pid = trigger.dataset.personId || "";
+    const firstName = trigger.dataset.personFirstname || "";
+    const fullName = trigger.dataset.personFullname || "";
+
+    // Update the modal title.
+    const title = modal.querySelector("#modal-contact-person-title");
+    if (title) {
+      title.textContent = firstName ? "Contact " + firstName : "Contact";
+    }
+
+    // Set the GF hidden recipient_pid field value (two targets as GF renders
+    // both an id-based and a name-based input for hidden fields).
+    if (formId && recipientField) {
+      const byId = modal.querySelector(
+        "#input_" + formId + "_" + recipientField,
+      );
+      const byName = modal.querySelector(
+        "input[name='input_" + recipientField + "']",
+      );
+      if (byId) byId.value = pid;
+      if (byName) byName.value = pid;
+
+      // Also update gform_field_values so GF's AJAX submission path picks up
+      // the value (mirrors the pluto cb-team implementation).
+      const fieldValues = modal.querySelector(
+        "input[name='gform_field_values']",
+      );
+      if (fieldValues) {
+        const current = fieldValues.value || "";
+        const updated = current
+          .split("&")
+          .filter((p) => !p.startsWith("recipient_pid="))
+          .concat("recipient_pid=" + encodeURIComponent(pid))
+          .join("&");
+        fieldValues.value = updated;
+      }
+    }
+  });
+})();
+
 /*
 
   // Header background

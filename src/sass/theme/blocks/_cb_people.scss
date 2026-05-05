@@ -84,5 +84,12 @@
     &--linkedin {
       color: var(--col-secondary-dark);
     }
+
+    // Routes through the contact modal instead of a direct mailto: link.
+    // Intentionally inherits all base contact-link styles — no visual
+    // distinction needed; the link text ("Contact {name}") provides context.
+    &--contact {
+      cursor: pointer;
+    }
   }
 }

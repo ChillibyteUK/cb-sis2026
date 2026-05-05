@@ -15,6 +15,7 @@ require_once CB_THEME_DIR . '/inc/cb-acf-theme-palette.php';
 require_once CB_THEME_DIR . '/inc/cb-posttypes.php';
 
 require_once CB_THEME_DIR . '/inc/cb-blocks.php';
+require_once CB_THEME_DIR . '/inc/cb-people-contact.php';
 
 /**
  * Editor styles: opt-in so WP loads editor.css in the block editor.
