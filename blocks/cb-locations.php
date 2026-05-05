@@ -10,7 +10,8 @@ defined( 'ABSPATH' ) || exit;
 $block_id = isset( $block['anchor'] ) && ! empty( $block['anchor'] ) ? $block['anchor'] : 'cb-locations-' . $block['id'];
 
 ?>
-<section class="cb-locations" id="<?= esc_attr( $block_id ); ?>">
+<a name="<?= esc_attr( $block_id ); ?>" class="anchor"></a>
+<section class="cb-locations">
 	<div class="container py-5">
 		<h2>Our locations</h2>
 		<div class="mb-4">Operating across the United Kingdom and Cyprus</div>
