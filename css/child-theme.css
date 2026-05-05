@@ -22165,6 +22165,12 @@ header:has(.navbar-collapse.collapsing) {
 .footer__logo {
   max-width: 140px;
 }
+.footer svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex-shrink: 0;
+}
 .footer__colophon {
   border-top: 1px solid var(--col-white-020);
   color: var(--col-white-070);

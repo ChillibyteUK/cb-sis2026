@@ -59,6 +59,13 @@
     max-width: 140px;
   }
 
+  svg {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    flex-shrink: 0;
+  }
+
   &__colophon {
     border-top: 1px solid var(--col-white-020);
     color: var(--col-white-070);
