@@ -73,44 +73,37 @@ foreach ( $blocks as $block ) {
 								)
 							);
 							?>
-							<div class="service-sidebar__person-name"><?= esc_html( get_the_title( $person_id ) ); ?></div>
-						</div>
-						<div class="service-sidebar__person-contact d-flex flex-column mb-4">
-							<?php
-							$email      = get_field( 'email_address', $person_id );
-						$full_name  = get_the_title( $person_id );
-						$first_name = explode( ' ', trim( $full_name ) )[0];
-						if ( $contact_form_id ) {
-							?>
-						<a href="#modal-contact-person"
-							class="service-sidebar__person-contact-link service-sidebar__person-contact-link--contact"
-							data-bs-toggle="modal"
-							data-bs-target="#modal-contact-person"
-							data-person-id="<?= esc_attr( $person_id ); ?>"
-							data-person-firstname="<?= esc_attr( $first_name ); ?>"
-							data-person-fullname="<?= esc_attr( $full_name ); ?>">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-							Contact <?= esc_html( $first_name ); ?>
-						</a>
-							<?php
-						} elseif ( $email ) {
-							?>
-						<a href="mailto:<?= esc_attr( antispambot( $email ) ); ?>" class="service-sidebar__person-email">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-							<?= esc_html( antispambot( $email ) ); ?>
-						</a>
-							<?php
-						}
-							$phone = get_field( 'phone_number', $person_id );
-							if ( $phone ) {
-								?>
-							<a href="tel:<?= esc_attr( parse_phone( $phone ) ); ?>" class="service-sidebar__person-phone">
-								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V21a1 1 0 0 1-1 1A17 17 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.56a1 1 0 0 1-.25 1.02l-2.2 2.21z"/></svg>
-								<?= esc_html( $phone ); ?>
-							</a>
+							<div>
+								<div class="service-sidebar__person-name"><?= esc_html( get_the_title( $person_id ) ); ?></div>
+								<div class="service-sidebar__person-contact d-flex flex-column mt-1">
 								<?php
-							}
-							?>
+								$full_name  = get_the_title( $person_id );
+								$first_name = explode( ' ', trim( $full_name ) )[0];
+								if ( $contact_form_id ) {
+									?>
+								<a href="#modal-contact-person"
+									class="service-sidebar__person-contact-link service-sidebar__person-contact-link--contact"
+									data-bs-toggle="modal"
+									data-bs-target="#modal-contact-person"
+									data-person-id="<?= esc_attr( $person_id ); ?>"
+									data-person-firstname="<?= esc_attr( $first_name ); ?>"
+									data-person-fullname="<?= esc_attr( $full_name ); ?>">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+									Contact <?= esc_html( $first_name ); ?>
+								</a>
+									<?php
+								}
+								$phone = get_field( 'phone_number', $person_id );
+								if ( $phone ) {
+									?>
+								<a href="tel:<?= esc_attr( parse_phone( $phone ) ); ?>" class="service-sidebar__person-phone">
+									<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24 11.36 11.36 0 0 0 3.56.57 1 1 0 0 1 1 1V21a1 1 0 0 1-1 1A17 17 0 0 1 3 5a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.56a1 1 0 0 1-.25 1.02l-2.2 2.21z"/></svg>
+									<?= esc_html( $phone ); ?>
+								</a>
+									<?php
+								}
+								?>
+							</div>
 						</div>
 					</div>
 						<?php
@@ -137,7 +130,7 @@ foreach ( $blocks as $block ) {
 // Rendered once per page — cb_people_modal_emitted() returns false only on the
 // first call across this template and the cb-people block.
 if ( $contact_form_id && ! cb_people_modal_emitted() ) :
-?>
+	?>
 <div class="modal fade"
 	id="modal-contact-person"
 	tabindex="-1"

@@ -22416,6 +22416,9 @@ header:has(.navbar-collapse.collapsing) {
 .service-sidebar__person-name {
   font-weight: var(--fw-600);
 }
+.service-sidebar__person-contact {
+  font-size: var(--fs-300);
+}
 .service-sidebar a {
   color: var(--col-brand-dark);
   text-decoration: none;

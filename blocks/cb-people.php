@@ -66,9 +66,9 @@ if ( $contact_form_id ) {
 						?>
 					<div class="cb-people__contact">
 						<?php
-						// Contact link: modal when form is configured (email optional — if no
-						// email_address is set the notification routes to contact_email only).
-						// Falls back to a plain mailto: if form is not configured but email exists.
+						// Contact link: shown whenever the form is configured.
+						// Email address is never emitted into markup — routing is
+						// handled server-side in cb-people-contact.php.
 						if ( $contact_form_id ) {
 								?>
 						<a href="#modal-contact-person"
@@ -80,13 +80,6 @@ if ( $contact_form_id ) {
 							data-person-fullname="<?= esc_attr( $full_name ); ?>">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
 							Contact <?= esc_html( $first_name ); ?>
-						</a>
-								<?php
-							} elseif ( $email ) {
-								?>
-						<a href="mailto:<?= esc_attr( antispambot( $email ) ); ?>" class="cb-people__contact-link">
-							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-							<?= esc_html( antispambot( $email ) ); ?>
 						</a>
 								<?php
 						}

@@ -14,6 +14,9 @@
   &__person-name {
     font-weight: var(--fw-600);
   }
+  &__person-contact {
+    font-size: var(--fs-300);
+  }
   a {
     color: var(--col-brand-dark);
     text-decoration: none;
