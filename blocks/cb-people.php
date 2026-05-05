@@ -66,17 +66,28 @@ if ( $contact_form_id ) {
 					<div class="cb-people__bio"><?= esc_html( $bio ); ?></div>
 					<?php } ?>
 					<?php
-					$phone    = get_field( 'phone_number', $person->ID );
-					$email    = get_field( 'email_address', $person->ID );
-					$linkedin = get_field( 'linkedin_url', $person->ID );
-					if ( $phone || $email || $linkedin || $contact_form_id ) {
+					$phone         = get_field( 'phone_number', $person->ID );
+					$email         = get_field( 'email_address', $person->ID );
+					$linkedin      = get_field( 'linkedin_url', $person->ID );
+					$external_site = get_field( 'external_site', $person->ID );
+					$link_text     = get_field( 'link_text', $person->ID );
+					if ( $phone || $email || $linkedin || $contact_form_id || $external_site ) {
 						?>
 					<div class="cb-people__contact">
 						<?php
-						// Contact link: shown whenever the form is configured.
-						// Email address is never emitted into markup — routing is
-						// handled server-side in cb-people-contact.php.
-						if ( $contact_form_id ) {
+						// Contact link: if an external site + link text are set, show
+						// that instead of the modal email link.
+						if ( $external_site && $link_text ) {
+								?>
+						<a href="<?= esc_url( $external_site ); ?>"
+							class="cb-people__contact-link cb-people__contact-link--external"
+							target="_blank"
+							rel="noopener noreferrer">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3v2h3.59l-9.3 9.29 1.42 1.42L19 6.41V10h2V3h-7zm-1 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
+							<?= esc_html( $link_text ); ?>
+						</a>
+								<?php
+						} elseif ( $contact_form_id ) {
 								?>
 						<a href="#modal-contact-person"
 							class="cb-people__contact-link cb-people__contact-link--contact"
