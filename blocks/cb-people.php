@@ -35,6 +35,13 @@ if ( $contact_form_id ) {
 	<div class="container py-5">
 		<h2>Who we are</h2>
 		<hr>
+		<?php
+		if ( get_field( 'intro' ) ) {
+			?>
+		<div class="cb-people__intro mb-4"><?= wp_kses_post( get_field( 'intro' ) ); ?></div>
+			<?php
+		}
+		?>
 		<div class="cb-people__grid mt-5">
 			<?php
 			foreach ( $people as $person ) {
