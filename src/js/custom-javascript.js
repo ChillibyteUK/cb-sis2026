@@ -4,7 +4,11 @@
 (function () {
   var navbar = document.getElementById("wrapper-navbar");
 
-  if (document.body.classList.contains("single-post")) {
+  var forceScrolled =
+    document.body.classList.contains("single-post") ||
+    document.body.classList.contains("page-template-text-page");
+
+  if (forceScrolled) {
     navbar.classList.add("scrolled");
   }
 
@@ -12,7 +16,7 @@
     if (window.scrollY > 50) {
       navbar.classList.add("scrolled");
     } else {
-      if (!document.body.classList.contains("single-post")) {
+      if (!forceScrolled) {
         navbar.classList.remove("scrolled");
       }
     }
