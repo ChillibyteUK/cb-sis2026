@@ -78,7 +78,7 @@ if ( $contact_form_id ) {
 						// Contact link: if an external site + link text are set, show
 						// that instead of the modal email link.
 						if ( $external_site && $link_text ) {
-								?>
+							?>
 						<a href="<?= esc_url( $external_site ); ?>"
 							class="cb-people__contact-link cb-people__contact-link--external"
 							target="_blank"
@@ -86,9 +86,9 @@ if ( $contact_form_id ) {
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M14 3v2h3.59l-9.3 9.29 1.42 1.42L19 6.41V10h2V3h-7zm-1 16H5V5h7V3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2v-7h-2v7z"/></svg>
 							<?= esc_html( $link_text ); ?>
 						</a>
-								<?php
+							<?php
 						} elseif ( $contact_form_id ) {
-								?>
+							?>
 						<a href="#modal-contact-person"
 							class="cb-people__contact-link cb-people__contact-link--contact"
 							data-bs-toggle="modal"
@@ -99,7 +99,7 @@ if ( $contact_form_id ) {
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
 							Contact <?= esc_html( $first_name ); ?>
 						</a>
-								<?php
+							<?php
 						}
 						if ( $phone ) {
 							?>
@@ -132,8 +132,8 @@ if ( $contact_form_id ) {
 // Rendered once per page (static flag inside cb_people_modal_emitted() persists
 // across this block, the service sidebar, or any other caller on the same
 // request). Only output when a form is configured.
-if ( $contact_form_id && ! cb_people_modal_emitted() ) :
-?>
+if ( $contact_form_id && ! cb_people_modal_emitted() ) {
+	?>
 <div class="modal fade"
 	id="modal-contact-person"
 	tabindex="-1"
@@ -163,4 +163,5 @@ if ( $contact_form_id && ! cb_people_modal_emitted() ) :
 		</div>
 	</div>
 </div>
-<?php endif; ?>
+	<?php
+}
