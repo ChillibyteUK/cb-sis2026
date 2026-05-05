@@ -95,24 +95,24 @@ function cb_people_resolve_form_fields( $form_id ) {
 			$label       = '';
 			$input_name  = '';
 			if ( is_object( $f ) ) {
-				$admin_label = (string) ( $f->adminLabel ?? '' );
-				$label       = (string) ( $f->label      ?? '' );
-				$input_name  = (string) ( $f->inputName  ?? '' );
+				$admin_label = (string) ( $f->adminLabel ?? '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
+				$label       = (string) ( $f->label ?? '' );
+				$input_name  = (string) ( $f->inputName ?? '' ); // phpcs:ignore WordPress.NamingConventions.ValidVariableName.UsedPropertyNotSnakeCase
 			} elseif ( is_array( $f ) ) {
 				$admin_label = (string) ( $f['adminLabel'] ?? '' );
-				$label       = (string) ( $f['label']      ?? '' );
-				$input_name  = (string) ( $f['inputName']  ?? '' );
+				$label       = (string) ( $f['label'] ?? '' );
+				$input_name  = (string) ( $f['inputName'] ?? '' );
 			}
 			$type = is_object( $f ) ? (string) $f->type : (string) ( $f['type'] ?? '' );
-			$id   = is_object( $f ) ? (int) $f->id     : (int) ( $f['id']   ?? 0 );
+			$id   = is_object( $f ) ? (int) $f->id : (int) ( $f['id'] ?? 0 );
 			if ( ! $id ) {
 				continue;
 			}
-			$key = strtolower( trim( $admin_label !== '' ? $admin_label : $label ) );
-			if ( $key !== '' && ! isset( $by_label[ $key ] ) ) {
+			$key = strtolower( trim( '' !== $admin_label ? $admin_label : $label ) );
+			if ( '' !== $key && ! isset( $by_label[ $key ] ) ) {
 				$by_label[ $key ] = $id;
 			}
-			if ( $input_name !== '' && ! isset( $by_input_name[ $input_name ] ) ) {
+			if ( '' !== $input_name && ! isset( $by_input_name[ $input_name ] ) ) {
 				$by_input_name[ $input_name ] = $id;
 			}
 			$by_type[ $type ][] = $id;
@@ -125,9 +125,9 @@ function cb_people_resolve_form_fields( $form_id ) {
 
 	$resolved = array(
 		'version'   => $version,
-		'name'      => $by_label['name']    ?? ( $first_of( 'name' ) ?: $first_of( 'text' ) ),
-		'email'     => $by_label['email']   ?? $first_of( 'email' ),
-		'phone'     => $by_label['phone']   ?? $first_of( 'phone' ),
+		'name'      => $by_label['name'] ?? ( $first_of( 'name' ) ? $first_of( 'name' ) : $first_of( 'text' ) ),
+		'email'     => $by_label['email'] ?? $first_of( 'email' ),
+		'phone'     => $by_label['phone'] ?? $first_of( 'phone' ),
 		'message'   => $by_label['message'] ?? $first_of( 'textarea' ),
 		'recipient' => $by_input_name['recipient_pid']
 			?? $by_label['recipient person id']
@@ -180,7 +180,7 @@ function cb_people_register_gf_hooks() {
 		return;
 	}
 	add_filter( "gform_pre_submission_filter_{$form_id}", 'cb_people_validate_recipient' );
-	add_filter( "gform_notification_{$form_id}", 'cb_people_route_notification', 10, 3 );
+	add_filter( "gform_notification_{$form_id}", 'cb_people_route_notification', 10, 2 );
 }
 add_action( 'init', 'cb_people_register_gf_hooks' );
 
@@ -233,10 +233,9 @@ function cb_people_validate_recipient( $form ) {
  *
  * @param array $notification GF notification.
  * @param array $form         GF form.
- * @param array $entry        GF entry.
  * @return array
  */
-function cb_people_route_notification( $notification, $form, $entry ) {
+function cb_people_route_notification( $notification, $form ) {
 	$site_email = function_exists( 'get_field' ) ? (string) get_field( 'contact_email', 'option' ) : '';
 	$store      = cb_people_recipient_store();
 
@@ -260,7 +259,7 @@ function cb_people_route_notification( $notification, $form, $entry ) {
 	}
 
 	// CC: the person's own email if available.
-	$notification['cc'] = $store['email'] ?: '';
+	$notification['cc'] = $store['email'] ? $store['email'] : '';
 
 	// Reply-To: submitter's email field.
 	$ids = cb_people_resolve_form_fields( (int) $form['id'] );
