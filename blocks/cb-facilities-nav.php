@@ -41,6 +41,11 @@ defined( 'ABSPATH' ) || exit;
 			}
 		}
 		?>
+		<a href="https://www.expatriatehealthcare.com/" class="cb-facilities-nav__row cb-facilities-nav__row--bank-cards" target="_blank">
+			<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/icon--expat.svg' ); ?>" class="cb-facilities-nav__icon" alt="Expatriate Healthcare icon">
+			<div class="cb-facilities-nav__ftitle">Expatriate Healthcare</div>
+			<div class="cb-facilities-nav__fdesc">Comprehensive health insurance solutions for individuals and families living or working abroad.</div>
+		</a>
 	</div>
 </section>
 <?php
