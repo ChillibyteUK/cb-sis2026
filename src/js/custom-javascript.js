@@ -128,7 +128,9 @@
 
 // Count up stat hero values when they enter view.
 (function () {
-  const statHeroes = document.querySelectorAll(".stat-hero, .cb-stats");
+  const statHeroes = document.querySelectorAll(
+    ".stat-hero, .cb-stats, .cb-ticker",
+  );
 
   if (!statHeroes.length) return;
 
@@ -144,7 +146,7 @@
     }
 
     if (prefersReducedMotion || target === 0) {
-      element.textContent = String(target);
+      element.textContent = target.toLocaleString();
       return;
     }
 
@@ -154,7 +156,7 @@
     const tick = (now) => {
       const progress = Math.min((now - startTime) / duration, 1);
       const eased = 1 - Math.pow(1 - progress, 3);
-      element.textContent = String(Math.round(target * eased));
+      element.textContent = Math.round(target * eased).toLocaleString();
 
       if (progress < 1) {
         window.requestAnimationFrame(tick);
@@ -170,7 +172,9 @@
         if (!entry.isIntersecting) return;
 
         entry.target
-          .querySelectorAll(".stat-hero__stat-value, .cb-stats__stat-value")
+          .querySelectorAll(
+            ".stat-hero__stat-value, .cb-stats__stat-value, .cb-ticker__stat-value",
+          )
           .forEach(animateValue);
 
         obs.unobserve(entry.target);
