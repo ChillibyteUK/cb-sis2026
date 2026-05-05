@@ -5769,21 +5769,10 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   border-radius: 50%;
 }
 
-.editor-post-title .editor-post-title__input {
+.editor-post-title .editor-post-title__input,
+.wp-block-post-title {
   font-size: 2.5rem;
   font-weight: 500;
-}
-
-.editor-styles-wrapper .wp-block {
-  max-width: 1140px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.editor-styles-wrapper .wp-block[data-align=wide] {
-  max-width: 1320px;
-}
-.editor-styles-wrapper .wp-block[data-align=full] {
-  max-width: none;
 }
 
 /*# sourceMappingURL=custom-editor-style.css.map */
