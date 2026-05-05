@@ -77,12 +77,11 @@ foreach ( $blocks as $block ) {
 						</div>
 						<div class="service-sidebar__person-contact d-flex flex-column mb-4">
 							<?php
-						$email = get_field( 'email_address', $person_id );
-						if ( $email ) {
-							$full_name  = get_the_title( $person_id );
-							$first_name = explode( ' ', trim( $full_name ) )[0];
-							if ( $contact_form_id ) {
-								?>
+							$email      = get_field( 'email_address', $person_id );
+						$full_name  = get_the_title( $person_id );
+						$first_name = explode( ' ', trim( $full_name ) )[0];
+						if ( $contact_form_id ) {
+							?>
 						<a href="#modal-contact-person"
 							class="service-sidebar__person-contact-link service-sidebar__person-contact-link--contact"
 							data-bs-toggle="modal"
@@ -93,15 +92,14 @@ foreach ( $blocks as $block ) {
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
 							Contact <?= esc_html( $first_name ); ?>
 						</a>
-								<?php
-							} else {
-								?>
+							<?php
+						} elseif ( $email ) {
+							?>
 						<a href="mailto:<?= esc_attr( antispambot( $email ) ); ?>" class="service-sidebar__person-email">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
 							<?= esc_html( antispambot( $email ) ); ?>
 						</a>
-								<?php
-							}
+							<?php
 						}
 							$phone = get_field( 'phone_number', $person_id );
 							if ( $phone ) {

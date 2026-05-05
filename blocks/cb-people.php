@@ -62,14 +62,14 @@ if ( $contact_form_id ) {
 					$phone    = get_field( 'phone_number', $person->ID );
 					$email    = get_field( 'email_address', $person->ID );
 					$linkedin = get_field( 'linkedin_url', $person->ID );
-					if ( $phone || $email || $linkedin ) {
+					if ( $phone || $email || $linkedin || $contact_form_id ) {
 						?>
 					<div class="cb-people__contact">
 						<?php
-						// Email: route through the contact modal when the form is configured,
-						// otherwise fall back to a plain mailto: link.
-						if ( $email ) {
-							if ( $contact_form_id ) {
+						// Contact link: modal when form is configured (email optional — if no
+						// email_address is set the notification routes to contact_email only).
+						// Falls back to a plain mailto: if form is not configured but email exists.
+						if ( $contact_form_id ) {
 								?>
 						<a href="#modal-contact-person"
 							class="cb-people__contact-link cb-people__contact-link--contact"
@@ -82,14 +82,13 @@ if ( $contact_form_id ) {
 							Contact <?= esc_html( $first_name ); ?>
 						</a>
 								<?php
-							} else {
+							} elseif ( $email ) {
 								?>
 						<a href="mailto:<?= esc_attr( antispambot( $email ) ); ?>" class="cb-people__contact-link">
 							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
 							<?= esc_html( antispambot( $email ) ); ?>
 						</a>
 								<?php
-							}
 						}
 						if ( $phone ) {
 							?>
