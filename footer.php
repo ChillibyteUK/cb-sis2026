@@ -60,6 +60,10 @@ defined( 'ABSPATH' ) || exit;
 				?>
 			</div>
 		</div>
+		<div>
+			Strategic Insurance Services Limited is part of the Specialist Risk Group (SRG), one of the fastest-growing groups of insurance intermediaries in the UK, placing £2BN of premium into the Global insurance market. SRG brings together individuals and businesses from across the world with a plethora of UK and international broking and underwriting specialisms, serving more than 120,000 clients.<br>
+ 			For more information about how we use and disclose your personal information, your rights under data protection law and who you can contact, please refer to our <a href="https://specialistrisk.com/privacy-policy/" target="_blank">privacy notice</a<.<br>
+			<a href="https://specialistrisk.com/" target="_blank" rel="nofollow">Visit the Specialist Risk Group website</a>
 	</div>
 
 	<div class="container pt-4 footer__colophon">
