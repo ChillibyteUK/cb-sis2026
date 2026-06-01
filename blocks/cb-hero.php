@@ -141,7 +141,6 @@ if ( is_front_page() ) {
 				<div>Supporting UK brokers with specialist insurance facilities</div>
 			</div>
 			<div class="col-md-4 ls-40">
-				<div>
 				Operating across the United Kingdom and Cyprus
 			</div>
 		</div>
